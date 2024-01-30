@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Container } from './src/components/Container/Container';
+import { BtnDecrement, BtnIncrement, Button } from './src/components/Button/Button';
+import { Title, TitleBtnDecrement, TitleBtnIncrement } from './src/components/Title/Title';
 
 export default function App() {
 
@@ -12,42 +14,27 @@ export default function App() {
   return (
     <Container>
 
-      <Text>Contador: {count}</Text>
-      <TouchableOpacity style={[styles.btnContador, {backgroundColor: "green"}]}  onPress={() => {
+      <Title>Contador: {count}</Title>
+   <BtnIncrement onPress={() => {
         setCount(count + 1)
       }}>
-        <Text style={{color: "white"}}>Incrementar</Text>
-      </TouchableOpacity>
+    <TitleBtnIncrement>
+      Incrementar
+    </TitleBtnIncrement>
+   </BtnIncrement>
 
-      <TouchableOpacity  style={[styles.btnContador]}  onPress={() => {
+<BtnDecrement  onPress={() => {
         if (count > 0) {
           setCount(count - 1)
         }
       }}>
-        <Text style={{color: "white"}}>Decrementar</Text>
-      </TouchableOpacity>
+      <TitleBtnDecrement>
+        Decrementar
+      </TitleBtnDecrement>
+      </BtnDecrement>
     </Container>
  
 
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 30
-  },
-  btnContador:{
-    backgroundColor: "red",
-    borderRadius:8,
-    width: 200,
-    height:35,
-    color: 'white',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  
-});

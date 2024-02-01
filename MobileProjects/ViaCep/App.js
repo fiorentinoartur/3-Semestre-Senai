@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Container } from './src/components/Container/Container';
 import { Header } from './src/components/Header/Header';
 import { Roboto_500Medium, useFonts } from '@expo-google-fonts/roboto'
@@ -42,8 +42,11 @@ export default function App() {
       const promise = await fetch(`${urlViaCep}/${cep}/json/`);
       console.warn(`${urlViaCep}/${cep}/json/`);
       const data = await promise.json();
-      console.warn(data.logradouro);
       setLogradouro(data.logradouro)
+      setBairro(data.bairro)
+      setCidade(data.localidade)
+      setEstado(data.estado)
+      setUF(data.uf)
 
 
 
@@ -65,7 +68,7 @@ export default function App() {
         <LabelText>Informar CEP</LabelText>
         <Input
           value={cep}
-          onPress={buscarCep}
+          onBlur={buscarCep}
           onChangeText={(texto) => setCep(texto)}
           placeholder="Cep.." />
 
@@ -85,7 +88,7 @@ export default function App() {
         <Input
           value={cidade}
           onChangeText={(texto) => setCidade(texto)}
-          placeholder="Bairro..." />
+          placeholder="Cidade..." />
 
         <View style={[{ flexDirection: 'row' }, { justifyContent:'space-between' }]} >
           <View>

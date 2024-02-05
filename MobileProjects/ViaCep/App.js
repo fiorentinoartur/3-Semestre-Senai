@@ -42,10 +42,14 @@ export default function App() {
       const promise = await fetch(`${urlViaCep}/${cep}/json/`);
       console.warn(`${urlViaCep}/${cep}/json/`);
       const data = await promise.json();
+      const urlEStado = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${data.uf}`;
+      const promiseEstado = await fetch(urlEStado);
+      const dataEstado = await promiseEstado.json();
+      console.log(dataEstado);
       setLogradouro(data.logradouro)
       setBairro(data.bairro)
       setCidade(data.localidade)
-      setEstado(data.estado)
+      setEstado(dataEstado.nome)
       setUF(data.uf)
 
 

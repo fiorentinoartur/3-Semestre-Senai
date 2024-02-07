@@ -11,7 +11,7 @@ const Login = () => {
     return (
   <Container>
     <Logo source={require("../../assets/Images/LogoBlue.png")}/>
-    <Title >Entrar ou crira conta</Title>
+    <Title >Entrar ou criar conta</Title>
     
    <Input placeholder="Usuário ou E-mail" />
    <Input 

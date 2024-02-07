@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "WgbaM6HoZFbIHUWrdEtQZHeMTWshgj1ngaycMYr6mDE=",
+  "Source": "webapi-vitalHub",
+  "BasePath": "_content/webapi-vitalHub",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "sLS7cD/IR0EdUBcKgeY3AHchlILOL9678D3XUKtLs+ZUdGc6kOoVmq/jJyv/MDPyNkarsn3Uiv0uJDDyhHtZAg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\49957976885\\source\\repos\\webapi-vitalHub\\webapi-vitalHub\\webapi-vitalHub.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\49957976885\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.15\\microsoft.aspnetcore.openapi.7.0.15.nupkg.sha512",
+    "C:\\Users\\49957976885\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\49957976885\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\49957976885\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\49957976885\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\49957976885\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\49957976885\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

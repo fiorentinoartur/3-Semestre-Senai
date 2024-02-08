@@ -14,6 +14,8 @@ import RecuperarSenha from './src/screens/RecuperarSenha/RecuperarSenha';
 import CriarConta from './src/screens/CriarConta/CriarConta';
 import RedefinirSenha from './src/screens/RedefinirSenha/RedefinirSenha';
 import VerifiqueEmail from './src/screens/VerifiqueEmail/VerifiqueEmail';
+import PerfilCadastro from './src/screens/PerfilCadastro/PerfilCadastro';
+import MedicoConsultas from './src/screens/MedicoConsultas/MedicoConsultas';
 export default function App() {
   const[fontsLoaded, fontsError] = useFonts({
     MontserratAlternates_700Bold,
@@ -34,7 +36,18 @@ export default function App() {
       //Envolve a estrutura da navegação 
       <NavigationContainer>
         {/* Componente para navegação */}
-          <Stack.Navigator>
+          <Stack.Navigator screenOptions={{headerShown:false}}>
+            <Stack.Screen
+            //nome da tela
+            name='Login'
+
+            //Componente que será chamado
+            component={Login}
+
+            //Titulo da tela
+            options={{title: 'Login'}}
+            
+            />
               <Stack.Screen
               //nome da tela
               name='Navegacao'
@@ -45,18 +58,7 @@ export default function App() {
               //Titulo da tela
               options={{title: 'Navegacao'}}
               
-              />
-              <Stack.Screen
-              //nome da tela
-              name='Login'
-
-              //Componente que será chamado
-              component={Login}
-
-              //Titulo da tela
-              options={{title: 'Login'}}
-              
-              />
+            />
               <Stack.Screen
               //nome da tela
               name='RecuperarSenha'
@@ -101,8 +103,31 @@ export default function App() {
               options={{title: 'Verificar Email'}}
               
               />
+              <Stack.Screen
+              //nome da tela
+              name='PerfilCadastro'
+
+              //Componente que será chamado
+              component={PerfilCadastro}
+
+              //Titulo da tela
+              options={{title: 'Cadastrar Perfil'}}
+              
+              />
+              <Stack.Screen
+              //nome da tela
+              name='MedicoConsultas'
+
+              //Componente que será chamado
+              component={MedicoConsultas}
+
+              //Titulo da tela
+              options={{title: 'Cadastrar Perfil'}}
+              
+              />
 
           </Stack.Navigator>
+          <StatusBar />
       </NavigationContainer>
   );
 }

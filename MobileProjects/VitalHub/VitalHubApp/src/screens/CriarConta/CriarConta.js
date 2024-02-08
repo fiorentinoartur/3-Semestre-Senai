@@ -16,7 +16,7 @@ const CriarConta = ({navigation}) => {
             <Input placeholder={"Usuário ou Email"}/>
             <Input placeholder={"Senha"}/>
             <Input placeholder={"Confirmar Senha"}/>
-            <Button><ButtonTitle>Cadastrar</ButtonTitle></Button>
+            <Button onPress={() => navigation.navigate("PerfilCadastro")}><ButtonTitle>Cadastrar</ButtonTitle></Button>
             <LinkMediumAccount onPress={() => navigation.navigate("Login")}>Cancelar</LinkMediumAccount>
         </Container>
     );

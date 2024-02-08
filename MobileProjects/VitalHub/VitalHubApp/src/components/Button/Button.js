@@ -30,11 +30,6 @@ export const ButtonTitleGoogle = styled(ButtonTitle)`
 color: #496BBA;
 `
 
-export const ButtonsNumber = styled.TouchableOpacity`
-width: 65px;
-height: 62px;
-border-radius: 5px;
-border: 2px solid #77CACF;
-justify-content: center;
-align-items: center;
+export const ButtonsNumber = styled.TextInput`
+
 `

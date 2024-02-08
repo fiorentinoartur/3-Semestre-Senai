@@ -25,7 +25,7 @@ const Login = ({navigation}) => {
     <LinkMedium onPress={() => navigation.navigate("RecuperarSenha")}>Esqueceu sua senha</LinkMedium>
 
     <Button>
-       <ButtonTitle>Entrar</ButtonTitle> 
+       <ButtonTitle onPress={() => navigation.navigate("MedicoConsultas")}>Entrar</ButtonTitle> 
     </Button>
 
     <ButtonGoogle>

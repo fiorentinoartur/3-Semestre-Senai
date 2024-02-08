@@ -6,6 +6,7 @@ import { TextCode, TextQuickSand } from '../../components/Text/Text';
 import { LinkMediumAccount } from '../../components/Links/Style';
 import { ContentAccount } from '../../components/ContentAccount/ContentAccount';
 import { Button, ButtonTitle, ButtonsNumber } from '../../components/Button/Button';
+import { InputCode } from '../../components/Input/Input';
 
 const VerifiqueEmail = ({navigation}) => {
     return (
@@ -16,18 +17,10 @@ const VerifiqueEmail = ({navigation}) => {
                 <LinkMediumAccount> username@email.com</LinkMediumAccount>
             </TextQuickSand>
             <ContentAccount>
-                <ButtonsNumber>
-                    <TextCode>0</TextCode>
-                </ButtonsNumber>
-                <ButtonsNumber>
-                    <TextCode>0</TextCode>
-                </ButtonsNumber>
-                <ButtonsNumber>
-                    <TextCode>0</TextCode>
-                </ButtonsNumber>
-                <ButtonsNumber>
-                    <TextCode>0</TextCode>
-                </ButtonsNumber>
+                <InputCode placeholder="0"/>
+                <InputCode placeholder="0"/>
+                <InputCode placeholder="0"/>
+                <InputCode placeholder="0"/>
             </ContentAccount>
             <Button onPress={() => navigation.navigate("RedefinirSenha")}><ButtonTitle>Entrar</ButtonTitle></Button>
             <LinkMediumAccount>Reenviar Código</LinkMediumAccount>

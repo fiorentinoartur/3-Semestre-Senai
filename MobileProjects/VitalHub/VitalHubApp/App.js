@@ -4,7 +4,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Navegacao } from './src/screens/Navegacao/Navegacao';
 import Login from './src/screens/Login/Login';
-
 //Instância do StackNavigator
 const Stack = createNativeStackNavigator();
 //import das fonts

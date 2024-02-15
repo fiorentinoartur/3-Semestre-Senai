@@ -9,10 +9,25 @@ text-align: center;
 margin-top: 15px;
 `
 
+
 export const TextQuickSand14 = styled(TextQuickSand)`
 font-size: 14px;
 color: #4E4B59;
 `
+export const TextQuickSand14Gray = styled.Text`
+font-size: 14px;
+color: #8C8A97;
+font-family: "Quicksand_400Regular";
+`
+
+export const TextQuickSand14GraySemiBold = styled(TextQuickSand14Gray)`
+font-family: "Quicksand_600SemiBold";
+`
+export const TextQuickSand14Green = styled(TextQuickSand14GraySemiBold)`
+color: #49B3BA;
+`
+
+
 export const TextCode = styled.Text`
 
 `

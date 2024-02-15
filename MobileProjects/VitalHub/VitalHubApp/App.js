@@ -8,20 +8,22 @@ import Login from './src/screens/Login/Login';
 const Stack = createNativeStackNavigator();
 //import das fonts
 import { useFonts, MontserratAlternates_700Bold,MontserratAlternates_600SemiBold, MontserratAlternates_500Medium} from '@expo-google-fonts/montserrat-alternates';
-import { Quicksand_600SemiBold,Quicksand_500Medium} from '@expo-google-fonts/quicksand';
+import { Quicksand_600SemiBold,Quicksand_500Medium,Quicksand_400Regular } from '@expo-google-fonts/quicksand';
 import RecuperarSenha from './src/screens/RecuperarSenha/RecuperarSenha';
 import CriarConta from './src/screens/CriarConta/CriarConta';
 import RedefinirSenha from './src/screens/RedefinirSenha/RedefinirSenha';
 import VerifiqueEmail from './src/screens/VerifiqueEmail/VerifiqueEmail';
 import PerfilCadastro from './src/screens/PerfilCadastro/PerfilCadastro';
 import MedicoConsultas from './src/screens/MedicoConsultas/MedicoConsultas';
+import ModalCancelarConsulta from './src/components/ModalCancelarConsulta/ModalCancelarConsulta';
 export default function App() {
   const[fontsLoaded, fontsError] = useFonts({
     MontserratAlternates_700Bold,
     MontserratAlternates_600SemiBold,
     MontserratAlternates_500Medium,
     Quicksand_600SemiBold,
-    Quicksand_500Medium
+    Quicksand_500Medium,
+    Quicksand_400Regular
   })
   if(!fontsLoaded && !fontsError){
     return null;
@@ -124,7 +126,14 @@ export default function App() {
               options={{title: 'Cadastrar Perfil'}}
               
               />
+<Stack.Screen
+name='ModalCancelarConsulta'
 
+component={ModalCancelarConsulta}
+
+options={{title: 'Cancelar Consulta'}}
+
+/>
           </Stack.Navigator>
           <StatusBar />
       </NavigationContainer>

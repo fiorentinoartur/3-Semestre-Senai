@@ -8,6 +8,9 @@ border-radius: 5px;
 margin-top: 30px;
 justify-content: center;
 `
+export const BtnCancelarConsulta = styled(Button)`
+width: 80%;
+`
 
 export const ButtonGoogle = styled(Button)`
 background-color: 1px solid #FAFAFA;
@@ -42,4 +45,16 @@ align-items: center;
 export const ButtonConsultaDiferente = styled(ButtonConsulta)`
 background-color: #FBFBFB;
 border: 2px solid #496BBA;
+`
+
+
+export const ButtonHour = styled.TouchableOpacity`
+height: 26px;
+width: 100px;
+border-radius: 5px;
+background-color: #E8FCFD;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+gap: 5;
 `

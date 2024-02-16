@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CardContainer, Container, ContainerDoutorClaudio } from '../../components/Container/Style';
 import { Header } from '../../components/Header/Header';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Animated, Image, StyleSheet, Text, View } from 'react-native';
+import { Animated, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { FotoClaudio } from '../../components/Logo/Style';
 import { TextQuickSand, TextQuickSand14, TextQuickSand14Gray, TextQuickSand14GrayMedium, TextQuickSand14GraySemiBold, TextQuickSand14Green } from '../../components/Text/Text';
 import { Title, Title12, Title12White, Title16, Title16white } from '../../components/Title/Style';
@@ -10,7 +10,9 @@ import { ContentAccount } from '../../components/ContentAccount/ContentAccount';
 import CalendarStrip from 'react-native-calendar-strip';
 import { BtnCancelarConsulta, ButtonConsulta, ButtonConsultaDiferente, ButtonHour, ButtonTitle } from '../../components/Button/Button';
 import { LinkCancel, LinkCancelarConsulta } from '../../components/Links/Style';
-import { CardModal, Modal } from '../../components/ModalCancelarConsulta/ModalCancelar/MoadalCancelar';
+import { TitleMes } from '../../components/Header/Style';
+import CardConsulta from '../../components/CardConsulta/CardConsulta';
+import ModalConsultas from '../../components/ModalConsultas/ModalConsultas';
 
 
 
@@ -21,26 +23,15 @@ const MedicoConsultas = ({ navigation }) => {
         setShowModal(showModal ? false : true);
     }
     return (
-        <View>
+        <>
+
+
             <Container>
-                <Header>
-                    <ContainerDoutorClaudio>
-                        <View>
-                            <TextQuickSand14>Bem Vindo</TextQuickSand14>
-                            <Title16white>Dr Claudio</Title16white>
-                        </View>
-                        <FotoClaudio source={require("../../assets/Images/claudioDoctor.png")} />
-                    </ContainerDoutorClaudio>
-                    <Image style={{ margin: 22 }} source={require("../../assets/Images/notification.png")} />
-
-                    <Title style={{ width: '90%' }}>Novembro 2023</Title>
-                </Header>
-
-
-
-
+                <Header></Header>
+                <TitleMes>Novembro 2023</TitleMes>
                 <CalendarStrip
                     scrollable
+
                     style={{ height: 100, width: '90%' }}
                     dateNumberStyle={{ color: '#5F5C6B' }}
                     dateNameStyle={{ color: '#ACABB7', marginBottom: 10 }}
@@ -51,8 +42,8 @@ const MedicoConsultas = ({ navigation }) => {
                     showMonth={false}
 
                 />
-                <View style={{ flexDirection: 'row', gap: 10, marginBottom: 30 }}>
 
+                <View style={{ flexDirection: 'row', gap: 10, marginBottom: 30 }}>
                     <ButtonConsulta>
                         <Title12White>Agendadas</Title12White>
                     </ButtonConsulta>
@@ -63,47 +54,52 @@ const MedicoConsultas = ({ navigation }) => {
                         <Title12>Canceladas</Title12>
                     </ButtonConsultaDiferente>
                 </View>
-                <CardContainer>
-                    <Image source={require("../../assets/Images/PersonGirl.png")} />
-                    <View style={{ justifyContent: 'space-between', height: '100%' }}>
-                        <Title16>Niccole Sarga</Title16>
-                        <View style={{ flexDirection: 'row', gap: 10 }}>
-                            <TextQuickSand14Gray>22 anos</TextQuickSand14Gray>
-                            <TextQuickSand14GraySemiBold>Retina</TextQuickSand14GraySemiBold>
-                        </View>
-                        <ButtonHour>
-                            <Image source={require("../../assets/Images/clock.png")} />
-                            <TextQuickSand14Green>14:00</TextQuickSand14Green>
-                        </ButtonHour>
-                    </View>
-                    <View style={{ height: '100%', justifyContent: 'flex-end' }}>
-                        <LinkCancel
-                            onPress={() => exibirModal()}
-                        >Cancelar</LinkCancel>
+               
 
-                    </View>
-                </CardContainer>
+                    <CardConsulta
+                        caminhoImage={'https://github.com/Carlos-Augusto-Roque.png'}
+                        nomePaciente={"Carlos Roque"}
+                        idadePaciente={30}
+                        tipoConsulta={'Retina'}
+                        horaConsulta={'14:00'}
+                        abrirModal={exibirModal}
+                    />
+                    <CardConsulta
+                        caminhoImage={'https://github.com/edualvesgt.png'}
+                        nomePaciente={"Eduardo Alves"}
+                        idadePaciente={"19"}
+                        tipoConsulta={"Rotina"}
+                        horaConsulta={"16:00"}
+                        abrirModal={exibirModal}
+                    />
+                    <CardConsulta
+                        caminhoImage={'https://github.com/ojuaum1.png'}
+                        nomePaciente={"João Oliveira"}
+                        idadePaciente={"19"}
+                        tipoConsulta={"Rotina"}
+                        horaConsulta={"17:00"}
+                        abrirModal={exibirModal}
+                    />
+                    <CardConsulta
+                        caminhoImage={'https://github.com/RichardRichk.png'}
+                        nomePaciente={"Richard Senai"}
+                        idadePaciente={"19"}
+                        tipoConsulta={"Rotina"}
+                        horaConsulta={"17:00"}
+                        abrirModal={exibirModal}
+                    />
+            
             </Container>
+          
 
             {showModal ? (
-                <Modal>
-                    <CardModal>
-                        <Title>Cancelar Consulta</Title>
-                        <TextQuickSand>Ao cancelar essa consulta, abrirá uma possível disponibilidade no seu horário, deseja mesmo cancelar essa consulta?</TextQuickSand>
-                        <BtnCancelarConsulta>
-                            <ButtonTitle>Confrmar</ButtonTitle>
-                        </BtnCancelarConsulta>
-                        <LinkCancelarConsulta
-                            onPress={() => exibirModal()}
-                        >Cancelar</LinkCancelarConsulta>
-                    </CardModal>
-                </Modal>
+                <ModalConsultas exibirModal={exibirModal}></ModalConsultas>
             ) : null}
+        </>
 
 
 
 
-        </View>
 
 
 

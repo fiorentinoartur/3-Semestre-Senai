@@ -43,19 +43,7 @@ margin: 22px 22px 0px 0px;
 `
 
 
-export const CardContainer = styled.View`
-width: 90%;
-height: 102px;
-box-shadow: 20px 20px 20px black;
-elevation: 10;
-background-color: white;
-margin-bottom: 20;
-flex-direction: row;
-align-items: center; 
-padding:  10px;
-gap: 15;
 
-`
 
 export const ContainerHeader = styled(LinearGradient).attrs({
  colors: ['#60BFC5', '#496BBA'],
@@ -69,5 +57,6 @@ border-bottom-right-radius:15px;
 justify-content: space-between;
 align-items: center;
 flex-direction: row;
+padding: 20px;
 
 `

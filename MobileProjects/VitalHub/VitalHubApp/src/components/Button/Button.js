@@ -48,13 +48,3 @@ border: 2px solid #496BBA;
 `
 
 
-export const ButtonHour = styled.TouchableOpacity`
-height: 26px;
-width: 100px;
-border-radius: 5px;
-background-color: #E8FCFD;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-gap: 5;
-`

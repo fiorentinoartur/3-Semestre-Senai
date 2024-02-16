@@ -15,7 +15,7 @@ import RedefinirSenha from './src/screens/RedefinirSenha/RedefinirSenha';
 import VerifiqueEmail from './src/screens/VerifiqueEmail/VerifiqueEmail';
 import PerfilCadastro from './src/screens/PerfilCadastro/PerfilCadastro';
 import MedicoConsultas from './src/screens/MedicoConsultas/MedicoConsultas';
-import ModalCancelarConsulta from './src/components/ModalCancelarConsulta/ModalCancelarConsulta';
+
 export default function App() {
   const[fontsLoaded, fontsError] = useFonts({
     MontserratAlternates_700Bold,
@@ -126,14 +126,7 @@ export default function App() {
               options={{title: 'Cadastrar Perfil'}}
               
               />
-<Stack.Screen
-name='ModalCancelarConsulta'
 
-component={ModalCancelarConsulta}
-
-options={{title: 'Cancelar Consulta'}}
-
-/>
           </Stack.Navigator>
           <StatusBar />
       </NavigationContainer>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { LinearGradient } from 'expo-linear-gradient';
 import { ContainerHeader } from "../Container/Style";
-import { BoxUser, ImageUser } from "./Style";
+import { BoxUser, DataUser, ImageUser, NameUser, TextDefault } from "./Style";
 
 export const Header = () => {
     return(
@@ -11,10 +11,8 @@ export const Header = () => {
                 source={{uri: "https://github.com/fiorentinoartur.png"}}
                 />
                 <DataUser>
-                    <TextDefault></TextDefault>
-             {/* 
-                    <NameUser></NameUser>
-                */}
+                    <TextDefault>Bem Vindo</TextDefault>
+                    <NameUser>Artur Fiorentino</NameUser>
                 </DataUser>
             </BoxUser> 
             {/* material icons */}

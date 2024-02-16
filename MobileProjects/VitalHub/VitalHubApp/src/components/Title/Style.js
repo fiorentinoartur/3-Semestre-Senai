@@ -6,6 +6,7 @@ margin-bottom: 5px;
 color: #33303e;
 font-family: "MontserratAlternates_600SemiBold";
 
+
 `
 export const Title16 = styled(Title)`
 font-size: 16px;

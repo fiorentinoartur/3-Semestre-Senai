@@ -33,18 +33,6 @@ export const ButtonTitleGoogle = styled(ButtonTitle)`
 color: #496BBA;
 `
 
-export const ButtonConsulta = styled.TouchableOpacity`
-height: 35px;
-width: 100px;
-background-color: #496BBA;
-margin-top: 30px;
-border-radius: 5px;
-justify-content: center;
-align-items: center;
-`
-export const ButtonConsultaDiferente = styled(ButtonConsulta)`
-background-color: #FBFBFB;
-border: 2px solid #496BBA;
-`
+
 
 

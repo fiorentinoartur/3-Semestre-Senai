@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const CardContainer = styled.View`
-width: 90%;
+width: 98%;
 height: 102px;
 box-shadow: 20px 20px 20px black;
 elevation: 10;
@@ -34,8 +34,15 @@ font-family: "MontserratAlternates_600SemiBold";
 `
 
 export const TextHour = styled(NamePaciente)`
-color: #49B3BA;
+
 font-size: 14px;
+${props => props.tipoCard != 'pendente' ? css`
+color: #4E4B59;
+` : css`
+
+color: #49B3BA;
+
+`}
 `
 
 export const ContainerData = styled.View`
@@ -59,16 +66,24 @@ export const BotaoHora = styled.TouchableOpacity`
 height: 26px;
 width: 100px;
 border-radius: 5px;
-background-color: #E8FCFD;
+
 flex-direction: row;
 align-items: center;
 justify-content: center;
 gap: 5;
-
+${props => props.tipoCard != 'pendente' ? css`
+background-color: #F1F0F5;
+` : css`
+background-color:  #E8FCFD;
+`}
 `
 export const LinkCancel = styled.Text`
 font-size: 12px;
-color: #C81D25;
 text-decoration: none;
-font-family: 'MontserratAlternates_500Medium' ;
+font-family: 'MontserratAlternates_500Medium';
+${props => props.tipoCard == 'pendente' ? css`
+color: #C81D25;
+` : props.tipoCard == 'realizada' ? css`
+color: #344F8F;
+` : null}
 `

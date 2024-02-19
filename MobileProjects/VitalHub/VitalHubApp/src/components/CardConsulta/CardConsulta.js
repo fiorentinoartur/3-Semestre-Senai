@@ -7,7 +7,7 @@ import { TextQuickSand14Gray, TextQuickSand14GraySemiBold, TextQuickSand14Green 
 import { ButtonHour } from '../Button/Button';
 import { BoxUser } from '../Header/Style';
 
-const CardConsulta = ({ caminhoImage, nomePaciente, idadePaciente, tipoConsulta, horaConsulta, abrirModal }) => {
+const CardConsulta = ({ caminhoImage, nomePaciente, idadePaciente, tipoConsulta, horaConsulta, abrirModal, status, tipoCard }) => {
     const [showModal, setShowModal] = useState(false);
 
     const exibirModal = () => {
@@ -16,7 +16,7 @@ const CardConsulta = ({ caminhoImage, nomePaciente, idadePaciente, tipoConsulta,
     return (
 
 <>
-        <CardContainer>
+{status ? (  <CardContainer>
             <BoxUser>
                 <ImagePaciente source={{ uri: caminhoImage }} />
                 <DataPaciente>
@@ -25,17 +25,21 @@ const CardConsulta = ({ caminhoImage, nomePaciente, idadePaciente, tipoConsulta,
                         <IdadePaciente>{idadePaciente}</IdadePaciente>
                         <TipoConsulta>{tipoConsulta}</TipoConsulta>
                     </ContainerData>
-                    <BotaoHora>
-                        <TextHour>{horaConsulta}</TextHour>
+                    <BotaoHora
+                    tipoCard={tipoCard}
+                    >
+                        <TextHour tipoCard={tipoCard}>{horaConsulta}</TextHour>
                     </BotaoHora>
                 </DataPaciente>
             </BoxUser>
             <LinkCancel
+                 tipoCard={tipoCard}
                 onPress={abrirModal}
             >
-                Cancelar
+                  {tipoCard == 'pendente' ? 'Cancelar' : tipoCard == 'realizada' ? 'Ver prontuario' : null}
             </LinkCancel>
-        </CardContainer>
+        </CardContainer>) : null }
+      
 </>
 
     );

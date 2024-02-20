@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BotaoHora, CardContainer, ContainerData, DataPaciente, IdadePaciente, ImagePaciente, LinkCancel, NamePaciente, TextHour, TipoConsulta } from './Style';
-import { Image, View } from 'react-native';
-import { Title16 } from '../Title/Style';
-import { TextQuickSand14Gray, TextQuickSand14GraySemiBold, TextQuickSand14Green } from '../Text/Text';
-
-import { ButtonHour } from '../Button/Button';
 import { BoxUser } from '../Header/Style';
 
-const CardConsulta = ({ caminhoImage, nomePaciente, idadePaciente, tipoConsulta, horaConsulta, abrirModal, status, tipoCard }) => {
-    const [showModal, setShowModal] = useState(false);
+const CardConsulta = ({ caminhoImage, nomePaciente, idadePaciente, tipoConsulta, horaConsulta, abrirModal, status, tipoCard,pegarObj }) => {
 
-    const exibirModal = () => {
-        setShowModal(showModal ? false : true);
+const[dados, setDados] =useState({
+    caminhoImage: '',
+    nomePaciente: '',
+    idadePaciente:'',
+})
+
+useEffect(() => {
+    if (tipoCard === 'realizada') {
+        console.log("Dados antes de passar para pegarObj:", dados);
+        pegarObj(dados);
     }
+}, [dados]);
     return (
 
 <>
@@ -34,7 +37,15 @@ const CardConsulta = ({ caminhoImage, nomePaciente, idadePaciente, tipoConsulta,
             </BoxUser>
             <LinkCancel
                  tipoCard={tipoCard}
-                onPress={abrirModal}
+                 onPress={() => {
+                    abrirModal(),
+                    setDados(prevState => ({ 
+                    ...prevState,
+                    caminhoImage: caminhoImage,
+                    nomePaciente: nomePaciente,
+                    idadePaciente:idadePaciente
+                    }));               
+                 }}
             >
                   {tipoCard == 'pendente' ? 'Cancelar' : tipoCard == 'realizada' ? 'Ver prontuario' : null}
             </LinkCancel>

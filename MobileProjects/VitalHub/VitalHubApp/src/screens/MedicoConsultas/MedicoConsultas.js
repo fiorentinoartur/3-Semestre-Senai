@@ -23,26 +23,38 @@ const MedicoConsultas = ({ navigation }) => {
   const [showModal, setShowModal] = useState(false);
   const [statusLista, setStatusLista] = useState("pendente");
   const [data, setData] = useState({
-   caminhoImage: '',
-   nomePaciente: '',
-   idadePaciente:'',
+    caminhoImage: '',
+    nomePaciente: '',
+    idadePaciente: '',
+    emailPaciente: ''
   });
- 
+
 
   const exibirModal = () => {
     setShowModal(showModal ? false : true);
   }
+  const NavigationNextPage = () => {
+    navigation.navigate("PacienteProntuario",
+      {
+        nome: data.nomePaciente,
+        imagem: data.caminhoImage,
+        idade: data.idadePaciente,
+        email: data.emailPaciente
+      })
+
+  }
   const pegarObj = (dados) => {
-   setData({
-    caminhoImage:  dados.caminhoImage,
-    nomePaciente:  dados.nomePaciente,
-    idadePaciente: dados.idadePaciente
-   })
+    setData({
+      caminhoImage: dados.caminhoImage,
+      nomePaciente: dados.nomePaciente,
+      idadePaciente: dados.idadePaciente,
+      emailPaciente: 'beta@senai.com'
+    })
   }
   const Consultas = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      
+
       caminhoImage: 'https://github.com/Carlos-Augusto-Roque.png',
       nomePaciente: "Carlos Roque",
       idadePaciente: 30,
@@ -50,8 +62,8 @@ const MedicoConsultas = ({ navigation }) => {
       horaConsulta: '14:00',
       status: 'pendente',
       abrirModal: exibirModal,
- 
-      
+
+
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -72,7 +84,7 @@ const MedicoConsultas = ({ navigation }) => {
       tipoConsulta: 'Retina',
       status: 'cancelada',
       horaConsulta: '14:00',
-      
+
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d73',
@@ -84,10 +96,21 @@ const MedicoConsultas = ({ navigation }) => {
       horaConsulta: '14:00',
       abrirModal: exibirModal,
     },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d74',
+      caminhoImage: 'https://github.com/RichardRichk.png',
+      nomePaciente: "Richard",
+      idadePaciente: 30,
+      tipoConsulta: 'Retina',
+      status: 'realizada',
+      horaConsulta: '14:00',
+      abrirModal: exibirModal,
+    },
     
+
   ];
-  
-  
+
+
   return (
     <>
 
@@ -115,14 +138,14 @@ const MedicoConsultas = ({ navigation }) => {
             clickButton={statusLista == 'pendente' ?? false}
             onPress={() => {
               setStatusLista("pendente")
-      
+
             }} />
           <ButtonListConsulta
             text={"Realizadas"}
             clickButton={statusLista == 'realizada' ?? false}
             onPress={() => {
               setStatusLista("realizada")
-       
+
             }}
           />
           <ButtonListConsulta
@@ -138,17 +161,17 @@ const MedicoConsultas = ({ navigation }) => {
         <FlatList
           data={Consultas}
           renderItem={({ item }) =>
-           <CardConsulta
-          tipoCard={item.status}
-          status={item.status == statusLista ?? false}
-          buscarId={item.buscarId}
-          abrirModal={item.abrirModal} 
-          pegarObj={item.pegarObj}
-          nomePaciente={item.nomePaciente}
-          caminhoImage={item.caminhoImage}
-          idadePaciente={item.idadePaciente}
-          tipoConsulta={item.tipoConsulta}
-          horaConsulta={item.horaConsulta} />}
+            <CardConsulta
+              tipoCard={item.status}
+              status={item.status == statusLista ?? false}
+              buscarId={item.buscarId}
+              abrirModal={item.abrirModal}
+              pegarObj={item.pegarObj}
+              nomePaciente={item.nomePaciente}
+              caminhoImage={item.caminhoImage}
+              idadePaciente={item.idadePaciente}
+              tipoConsulta={item.tipoConsulta}
+              horaConsulta={item.horaConsulta} />}
           keyExtractor={item => item.id}
           contentContainerStyle={styles.container}
         />
@@ -161,9 +184,10 @@ const MedicoConsultas = ({ navigation }) => {
       {showModal && statusLista == "pendente" ? (
         <ModalConsultas exibirModal={exibirModal}></ModalConsultas>
       ) : showModal && statusLista == "realizada" ? (
-        <ModalProntuario 
-        exibirModal={exibirModal}
-      dados={data}
+        <ModalProntuario
+          exibirModal={exibirModal}
+          dados={data}
+          navigation={NavigationNextPage}
         />
       ) : null}
     </>

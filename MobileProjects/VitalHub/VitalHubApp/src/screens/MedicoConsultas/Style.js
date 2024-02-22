@@ -20,6 +20,7 @@ export const ContainerDados = styled.View`
 flex-direction: row;
 justify-content: space-between;
 gap: 20;
+margin-bottom: 25px;
 `
 
 

@@ -5,8 +5,9 @@ import { TitleMes } from '../Header/Style';
 import { ContainerDados, TitlePaciente } from '../../screens/MedicoConsultas/Style';
 import { TipoConsulta } from '../CardConsulta/Style';
 import { Button } from '../Button/Button';
+import PacienteProntuario from '../../screens/PacienteProntuario/PacienteProntuario';
 
-const ModalProntuario = ({dados,exibirModal}) => {
+const ModalProntuario = ({dados,exibirModal, navigation}) => {
 const[email,setEmail] = useState();
 
 
@@ -16,7 +17,6 @@ const GerarEmail = () => {
   const firstName = worlds[0];
   const lastName = worlds[worlds.length - 1]
   const emailGerado =  `${firstName}@${lastName}.com`
-  console.warn(emailGerado);
   setEmail(emailGerado)
 }
 
@@ -34,7 +34,10 @@ GerarEmail()
           <TipoConsulta>{dados.idadePaciente} anos </TipoConsulta>
           <TipoConsulta>{email}</TipoConsulta>
           </ContainerDados>
-          <Button>
+          <Button onPress={() => {
+            navigation(),
+            exibirModal()
+          }}>
             <ButtonTitle>Inserir Prontuário</ButtonTitle>
           </Button>
           <LinkCancelarConsulta

@@ -43,4 +43,5 @@ font-size: 14px;
 font-family: 'MontserratAlternates_500Medium' ;
 margin-top: 30px;
 text-decoration: underline;
+margin-bottom: 20px;
 `

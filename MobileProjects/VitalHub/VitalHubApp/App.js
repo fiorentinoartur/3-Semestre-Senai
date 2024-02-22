@@ -7,17 +7,18 @@ import Login from './src/screens/Login/Login';
 //Instância do StackNavigator
 const Stack = createNativeStackNavigator();
 //import das fonts
-import { useFonts, MontserratAlternates_700Bold,MontserratAlternates_600SemiBold, MontserratAlternates_500Medium} from '@expo-google-fonts/montserrat-alternates';
-import { Quicksand_600SemiBold,Quicksand_500Medium,Quicksand_400Regular } from '@expo-google-fonts/quicksand';
+import { useFonts, MontserratAlternates_700Bold, MontserratAlternates_600SemiBold, MontserratAlternates_500Medium } from '@expo-google-fonts/montserrat-alternates';
+import { Quicksand_600SemiBold, Quicksand_500Medium, Quicksand_400Regular } from '@expo-google-fonts/quicksand';
 import RecuperarSenha from './src/screens/RecuperarSenha/RecuperarSenha';
 import CriarConta from './src/screens/CriarConta/CriarConta';
 import RedefinirSenha from './src/screens/RedefinirSenha/RedefinirSenha';
 import VerifiqueEmail from './src/screens/VerifiqueEmail/VerifiqueEmail';
 import PerfilCadastro from './src/screens/PerfilCadastro/PerfilCadastro';
 import MedicoConsultas from './src/screens/MedicoConsultas/MedicoConsultas';
+import PacienteProntuario from './src/screens/PacienteProntuario/PacienteProntuario';
 
 export default function App() {
-  const[fontsLoaded, fontsError] = useFonts({
+  const [fontsLoaded, fontsError] = useFonts({
     MontserratAlternates_700Bold,
     MontserratAlternates_600SemiBold,
     MontserratAlternates_500Medium,
@@ -25,111 +26,120 @@ export default function App() {
     Quicksand_500Medium,
     Quicksand_400Regular
   })
-  if(!fontsLoaded && !fontsError){
+  if (!fontsLoaded && !fontsError) {
     return null;
   }
   return (
-      //Navegação
-      //Container
-      //StackNavigator
-      //StackScreen
+    //Navegação
+    //Container
+    //StackNavigator
+    //StackScreen
 
-      //Envolve a estrutura da navegação 
-      <NavigationContainer>
-        {/* Componente para navegação */}
-          <Stack.Navigator screenOptions={{headerShown:false}}>
-            <Stack.Screen
-            //nome da tela
-            name='Login'
+    //Envolve a estrutura da navegação 
+    <NavigationContainer>
+      {/* Componente para navegação */}
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          //nome da tela
+          name='Login'
 
-            //Componente que será chamado
-            component={Login}
+          //Componente que será chamado
+          component={Login}
 
-            //Titulo da tela
-            options={{title: 'Login'}}
-            
-            />
-              <Stack.Screen
-              //nome da tela
-              name='Navegacao'
+          //Titulo da tela
+          options={{ title: 'Login' }}
 
-              //Componente que será chamado
-              component={Navegacao}
+        />
+        <Stack.Screen
+          //nome da tela
+          name='Navegacao'
 
-              //Titulo da tela
-              options={{title: 'Navegacao'}}
-              
-            />
-              <Stack.Screen
-              //nome da tela
-              name='RecuperarSenha'
+          //Componente que será chamado
+          component={Navegacao}
 
-              //Componente que será chamado
-              component={RecuperarSenha}
+          //Titulo da tela
+          options={{ title: 'Navegacao' }}
 
-              //Titulo da tela
-              options={{title: 'Recuperar Senha'}}
-              
-              />
-              <Stack.Screen
-              //nome da tela
-              name='CriarConta'
+        />
+        <Stack.Screen
+          //nome da tela
+          name='RecuperarSenha'
 
-              //Componente que será chamado
-              component={CriarConta}
+          //Componente que será chamado
+          component={RecuperarSenha}
 
-              //Titulo da tela
-              options={{title: 'Recuperar Senha'}}
-              
-              />
-              <Stack.Screen
-              //nome da tela
-              name='RedefinirSenha'
+          //Titulo da tela
+          options={{ title: 'Recuperar Senha' }}
 
-              //Componente que será chamado
-              component={RedefinirSenha}
+        />
+        <Stack.Screen
+          //nome da tela
+          name='CriarConta'
 
-              //Titulo da tela
-              options={{title: 'Redefinir Senha'}}
-              
-              />
-              <Stack.Screen
-              //nome da tela
-              name='VerifiqueEmail'
+          //Componente que será chamado
+          component={CriarConta}
 
-              //Componente que será chamado
-              component={VerifiqueEmail}
+          //Titulo da tela
+          options={{ title: 'Recuperar Senha' }}
 
-              //Titulo da tela
-              options={{title: 'Verificar Email'}}
-              
-              />
-              <Stack.Screen
-              //nome da tela
-              name='PerfilCadastro'
+        />
+        <Stack.Screen
+          //nome da tela
+          name='RedefinirSenha'
 
-              //Componente que será chamado
-              component={PerfilCadastro}
+          //Componente que será chamado
+          component={RedefinirSenha}
 
-              //Titulo da tela
-              options={{title: 'Cadastrar Perfil'}}
-              
-              />
-              <Stack.Screen
-              //nome da tela
-              name='MedicoConsultas'
+          //Titulo da tela
+          options={{ title: 'Redefinir Senha' }}
 
-              //Componente que será chamado
-              component={MedicoConsultas}
+        />
+        <Stack.Screen
+          //nome da tela
+          name='VerifiqueEmail'
 
-              //Titulo da tela
-              options={{title: 'Cadastrar Perfil'}}
-              
-              />
+          //Componente que será chamado
+          component={VerifiqueEmail}
 
-          </Stack.Navigator>
-          <StatusBar />
-      </NavigationContainer>
+          //Titulo da tela
+          options={{ title: 'Verificar Email' }}
+
+        />
+        <Stack.Screen
+          //nome da tela
+          name='PerfilCadastro'
+
+          //Componente que será chamado
+          component={PerfilCadastro}
+
+          //Titulo da tela
+          options={{ title: 'Cadastrar Perfil' }}
+
+        />
+        <Stack.Screen
+          //nome da tela
+          name='MedicoConsultas'
+
+          //Componente que será chamado
+          component={MedicoConsultas}
+
+          //Titulo da tela
+          options={{ title: 'Cadastrar Perfil' }}
+
+        />
+
+        <Stack.Screen
+        name='PacienteProntuario'
+
+        component={PacienteProntuario}
+
+        options={{title: 'Cadastrar Paciente'}}
+
+        />
+
+      </Stack.Navigator>
+      <StatusBar />
+    </NavigationContainer>
   );
 }
 

@@ -16,6 +16,7 @@ import VerifiqueEmail from './src/screens/VerifiqueEmail/VerifiqueEmail';
 import PerfilCadastro from './src/screens/PerfilCadastro/PerfilCadastro';
 import MedicoConsultas from './src/screens/MedicoConsultas/MedicoConsultas';
 import PacienteProntuario from './src/screens/PacienteProntuario/PacienteProntuario';
+import HomePaciente from './src/screens/HomePaciente/HomePaciente';
 
 export default function App() {
   const [fontsLoaded, fontsError] = useFonts({
@@ -41,17 +42,6 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen
           //nome da tela
-          name='Login'
-
-          //Componente que será chamado
-          component={Login}
-
-          //Titulo da tela
-          options={{ title: 'Login' }}
-
-        />
-        <Stack.Screen
-          //nome da tela
           name='Navegacao'
 
           //Componente que será chamado
@@ -59,6 +49,22 @@ export default function App() {
 
           //Titulo da tela
           options={{ title: 'Navegacao' }}
+
+        />
+        <Stack.Screen
+name='HomePaciente'
+component={HomePaciente}
+options={{title: 'Home Paciente'}}
+        />
+        <Stack.Screen
+          //nome da tela
+          name='Login'
+
+          //Componente que será chamado
+          component={Login}
+
+          //Titulo da tela
+          options={{ title: 'Login' }}
 
         />
         <Stack.Screen

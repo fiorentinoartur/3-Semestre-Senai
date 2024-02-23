@@ -3,16 +3,16 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { ContainerHeader } from "../Container/Style";
 import { BoxUser, DataUser, ImageUser, NameUser, TextDefault } from "./Style";
 
-export const Header = () => {
+export const Header = ({caminhoImage, nameUser}) => {
     return(
         <ContainerHeader>
            <BoxUser>
                 <ImageUser
-                source={{uri: "https://github.com/fiorentinoartur.png"}}
+                source={{uri: caminhoImage}}
                 />
                 <DataUser>
                     <TextDefault>Bem Vindo</TextDefault>
-                    <NameUser>Artur Fiorentino</NameUser>
+                    <NameUser>{nameUser}</NameUser>
                 </DataUser>
             </BoxUser> 
             {/* material icons */}

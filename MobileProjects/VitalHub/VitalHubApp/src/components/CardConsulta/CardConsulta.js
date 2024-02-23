@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BotaoHora, CardContainer, ContainerData, DataPaciente, IdadePaciente, ImagePaciente, LinkCancel, NamePaciente, TextHour, TipoConsulta } from './Style';
 import { BoxUser } from '../Header/Style';
 
-const CardConsulta = ({ caminhoImage, nomePaciente, idadePaciente, tipoConsulta, horaConsulta, abrirModal, status, tipoCard,pegarObj }) => {
+const CardConsulta = ({ caminhoImage, nomePaciente, idadePaciente, tipoConsulta, horaConsulta, abrirModal, status, tipoCard, pegarObj }) => {
 
 const[dados, setDados] =useState({
     caminhoImage: '',
@@ -11,10 +11,11 @@ const[dados, setDados] =useState({
 })
 
 useEffect(() => {
-    if (tipoCard === 'realizada') {
+    if (tipoCard === 'realizada' && dados.caminhoImage != "") {
         console.log("Dados antes de passar para pegarObj:", dados);
-        pegarObj(dados);
-    }
+    console.warn(dados);
+    pegarObj(dados)
+}
 }, [dados]);
     return (
 

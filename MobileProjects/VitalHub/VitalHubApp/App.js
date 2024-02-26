@@ -17,6 +17,8 @@ import PerfilCadastro from './src/screens/PerfilCadastro/PerfilCadastro';
 import MedicoConsultas from './src/screens/MedicoConsultas/MedicoConsultas';
 import PacienteProntuario from './src/screens/PacienteProntuario/PacienteProntuario';
 import HomePaciente from './src/screens/HomePaciente/HomePaciente';
+import SelecionarClinica from './src/screens/SelecionarClinica/SelecionarClinica';
+import SelecionarMedico from './src/screens/SelecionarMedico/SelecionarMedico';
 
 export default function App() {
   const [fontsLoaded, fontsError] = useFonts({
@@ -140,6 +142,23 @@ options={{title: 'Home Paciente'}}
         component={PacienteProntuario}
 
         options={{title: 'Cadastrar Paciente'}}
+
+        />
+
+        <Stack.Screen
+        name='SelecionarClinica'
+
+        component={SelecionarClinica}
+
+        options={{title: 'Selecionar Clinica'}}
+
+        />
+        <Stack.Screen
+        name='SelecionarMedico'
+
+        component={SelecionarMedico}
+
+        options={{title: 'Selecionar Medico'}}
 
         />
 

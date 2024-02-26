@@ -10,11 +10,14 @@ import CardConsulta from '../../components/CardConsulta/CardConsulta';
 import { ButtonEstetoscopio } from './Style';
 import ModalHomePaciente from '../../components/ModalHomePaciente/ModalHomePaciente';
 
-const HomePaciente = () => {
+const HomePaciente = ({navigation}) => {
     const [showModal, setShowModal] = useState(false);
     const [statusLista, setStatusLista] = useState("pendente");
     const exibirModal = () => {
         setShowModal(showModal ? false : true);
+    }
+    const navigationNextPage = () => {
+        navigation.navigate("SelecionarClinica")
     }
     const pegarObj = (dados) => {
         setData({
@@ -130,6 +133,7 @@ const HomePaciente = () => {
                     data={Consultas}
                     renderItem={({ item }) =>
                         <CardConsulta
+                        
                             tipoCard={item.status}
                             status={item.status == statusLista ?? false}
                             buscarId={item.buscarId}
@@ -147,7 +151,8 @@ const HomePaciente = () => {
                     <Image source={require('../../assets/Images/iconEstetoscopio.png')} />
                 </ButtonEstetoscopio>
             </Container>
-            <ModalHomePaciente/>
+
+           {showModal ? <ModalHomePaciente navigation={navigationNextPage}  showModal={exibirModal}/> : null  } 
         </>
     );
 };

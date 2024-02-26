@@ -26,7 +26,10 @@ color: #33303e;
 font-family: "MontserratAlternates_600SemiBold";
 margin-bottom: 30px ;
 `
-
+export const TitleAgendamentoClinica = styled(TitleAgendamento)`
+margin-top: 72px;
+margin-bottom: 35px;
+`
 export const LabelAgendamento = styled.Text`
 font-family: "Quicksand_600SemiBold";
 font-size: 14px;

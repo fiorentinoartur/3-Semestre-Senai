@@ -8,7 +8,7 @@ import ButtonListNivelConsulta from '../ButtonLIstNivelConsulta/ButtonListNivelC
 import { Button } from '../Button/Button';
 import { LinkMediumAccount } from '../Links/Style';
 
-const ModalHomePaciente = () => {
+const ModalHomePaciente = ({navigation, showModal}) => {
     const [statusLista, setStatusLista] = useState("rotina");
     return (
         <ModalPaciente>
@@ -47,9 +47,13 @@ const ModalHomePaciente = () => {
 
                 <Input placeholder="Informe a localização" />
                 <Button>
-                    <ButtonTitle>Continuar</ButtonTitle>
+                    <ButtonTitle onPress={() => {
+
+                        navigation();
+                    }}>Continuar</ButtonTitle>
+                    
                 </Button>
-                <LinkMediumAccount>Cancelar</LinkMediumAccount>
+                <LinkMediumAccount onPress={showModal}>Cancelar</LinkMediumAccount>
             </CotainerAgendarConsulta>
         </ModalPaciente>
     );

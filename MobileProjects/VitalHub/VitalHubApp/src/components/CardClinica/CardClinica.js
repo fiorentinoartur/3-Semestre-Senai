@@ -3,21 +3,21 @@ import { Container1, ContainerAvalicao, ContainerCard, ContainerFuncionamento, L
 import { Image } from 'react-native';
 import { NamePaciente } from '../CardConsulta/Style';
 
-const CardClinica = ({nameClinic,  mediaAvaliacao, cidade, estado, funcionamento}) => {
+const CardClinica = ({nameClinic,  mediaAvaliacao, cidade, estado, funcionamento, clickButton}) => {
     return (
-        <ContainerCard>
+        <ContainerCard clickButton={clickButton}>
             <Container1>
-            <NamePaciente>Clínica Natureh</NamePaciente>
+            <NamePaciente>{nameClinic}</NamePaciente>
             <ContainerAvalicao>
             <Image source={require("../../assets/Images/star.png")}/> 
-            <MediaAvaliacao>4,5</MediaAvaliacao>
+            <MediaAvaliacao>{mediaAvaliacao}</MediaAvaliacao>
             </ContainerAvalicao>
             </Container1>
             <Container1>
-                <LocalizacaoText>São Paulo, SP</LocalizacaoText>
+                <LocalizacaoText>{cidade}, {estado}</LocalizacaoText>
                 <ContainerFuncionamento>
                 <Image source={require("../../assets/Images/calendarIcon.png")}/>
-                <TextFuncionamento>Seg-Sex</TextFuncionamento>
+                <TextFuncionamento>{funcionamento}</TextFuncionamento>
                 </ContainerFuncionamento>
             </Container1>
         </ContainerCard>

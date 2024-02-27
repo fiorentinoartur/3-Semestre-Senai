@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ContainerMedico = styled.View`
 width: 100%;
@@ -11,6 +11,11 @@ flex-direction: row;
 margin-bottom: 15px;
 align-items: center;
 gap: 10px;
+border-radius: 8px;
+
+${props => props.clickButton ? css`
+border: 2px solid #496BBA;
+`: null}
 `
 
 export const ImageDoctor = styled.Image`

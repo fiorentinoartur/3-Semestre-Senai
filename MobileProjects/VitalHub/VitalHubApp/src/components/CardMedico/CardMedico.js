@@ -3,10 +3,10 @@ import { ContainerDadosMedico, ContainerMedico, EspecialidadeText, ImageDoctor }
 import { Container1 } from '../CardClinica/Style';
 import { NamePaciente } from '../CardConsulta/Style';
 
-const CardMedico = ({nameDoctor,imagem,especialidades}) => {
+const CardMedico = ({nameDoctor,imagem,especialidades, clickButton}) => {
 
     return (
-    <ContainerMedico>
+    <ContainerMedico clickButton={clickButton}>
 <ImageDoctor source={{uri: imagem} } />
 <ContainerDadosMedico>
     <NamePaciente>{nameDoctor}</NamePaciente>

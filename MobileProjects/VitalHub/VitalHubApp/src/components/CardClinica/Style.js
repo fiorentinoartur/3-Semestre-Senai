@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ContainerCard = styled.View`
 height: 84px;
@@ -9,6 +9,10 @@ elevation: 10;
 background-color: white;
 padding: 15px;
 justify-content: space-between;
+
+${props => props.clickButton ? css`
+border: 2px solid #496BBA;
+` : null}
 
 `
 

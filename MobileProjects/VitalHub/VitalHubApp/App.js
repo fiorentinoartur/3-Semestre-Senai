@@ -19,6 +19,7 @@ import PacienteProntuario from './src/screens/PacienteProntuario/PacienteProntua
 import HomePaciente from './src/screens/HomePaciente/HomePaciente';
 import SelecionarClinica from './src/screens/SelecionarClinica/SelecionarClinica';
 import SelecionarMedico from './src/screens/SelecionarMedico/SelecionarMedico';
+import SelecionarData from './src/screens/SelecionarData/SelecionarData';
 
 export default function App() {
   const [fontsLoaded, fontsError] = useFonts({
@@ -160,6 +161,14 @@ options={{title: 'Home Paciente'}}
 
         options={{title: 'Selecionar Medico'}}
 
+        />
+
+        <Stack.Screen
+        name='SelecionarData'
+
+        component={SelecionarData}
+
+        options={{title: 'Selecionar Data'}}
         />
 
       </Stack.Navigator>

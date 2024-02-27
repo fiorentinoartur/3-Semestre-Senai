@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from '../../components/Container/Style';
 import { TitleAgendamento, TitleAgendamentoClinica } from '../../components/ModalHomePaciente/Style';
 import CardClinica from '../../components/CardClinica/CardClinica';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet, Touchable, TouchableOpacity } from 'react-native';
 import { ContainerContinuar, ListarClinicas } from './Style';
 import { Button } from '../../components/Button/Button';
 import { ButtonTitle } from '../../components/ModalConsultas/Style';
 import { LinkMedium, LinkMediumAccount } from '../../components/Links/Style';
 const SelecionarClinica = ({navigation}) => {
+  const [selectedId, setSelectedId] = useState(); 
 
+  const  toggleItemSelect = ( id ) => { 
+  setSelectedId(id)
+
+  }; 
   const Data = [
     {
+      id: '1',
       clinicName: "Clínica Natureh",
       cidade: "São Paulo",
       estado: "SP",
@@ -18,6 +24,7 @@ const SelecionarClinica = ({navigation}) => {
       mediaAvaliacao: "4,5"
     },
     {
+      id: '2',
       clinicName: "Diamond Pró-Mulher",
       cidade: "São Paulo",
       estado: "SP",
@@ -25,6 +32,7 @@ const SelecionarClinica = ({navigation}) => {
       mediaAvaliacao: "4,5"
     },
     {
+      id: '3',
       clinicName: "Clinica Villa Lobos",
       cidade: "Taboão",
       estado: "SP",
@@ -32,6 +40,7 @@ const SelecionarClinica = ({navigation}) => {
       mediaAvaliacao: "4,5"
     },
     {
+      id: '4',
       clinicName: "SP Oncologia Clínica",
       cidade: "Taboão",
       estado: "SP",
@@ -40,13 +49,21 @@ const SelecionarClinica = ({navigation}) => {
     },
   ]
 
+
   return (
     <Container>
       <TitleAgendamentoClinica>Selecionar Clínica</TitleAgendamentoClinica>
+  
       <ListarClinicas
         data={Data}
+
+        keyExtractor={item => item.id} 
         renderItem={({ item }) =>
+        <TouchableOpacity
+        onPress={() => toggleItemSelect(item.id)} 
+        >
           <CardClinica
+           clickButton={item.id == selectedId ?? false}
             key={Math.random()}
             cidade={item.cidade}
             estado={item.estado}
@@ -55,6 +72,7 @@ const SelecionarClinica = ({navigation}) => {
             nameClinic={item.clinicName}
 
           />
+        </TouchableOpacity>
         }
       />
       <ContainerContinuar>

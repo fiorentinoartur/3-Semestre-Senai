@@ -9,6 +9,7 @@ import { FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import CardConsulta from '../../components/CardConsulta/CardConsulta';
 import { ButtonEstetoscopio } from './Style';
 import ModalHomePaciente from '../../components/ModalHomePaciente/ModalHomePaciente';
+import CalendarHome from '../../components/CalendarHome/CalendarHome';
 
 const HomePaciente = ({navigation}) => {
     const [showModal, setShowModal] = useState(false);
@@ -89,20 +90,8 @@ const HomePaciente = ({navigation}) => {
         <>
             <Container>
                 <Header caminhoImage='https://github.com/LimaGustav.png' nameUser='Gustavo Lima'></Header>
-                <TitleMes>Novembro 2023</TitleMes>
-                <CalendarStrip
-                    scrollable
-
-                    style={{ height: 100, width: '90%', }}
-                    dateNumberStyle={{ color: '#5F5C6B' }}
-                    dateNameStyle={{ color: '#ACABB7', marginBottom: 10 }}
-                    highlightDateNumberStyle={{ color: 'white', backgroundColor: '#60BFC5', height: 30, width: 30, borderRadius: 15, textAlignVertical: 'center' }}
-                    highlightDateNameStyle={{ color: '#60BFC5' }}  //Dia semana
-                    minDate={new Date(Date.now())}
-                    maxDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)}
-                    showMonth={false}
-
-                />
+                
+    <CalendarHome />
                 <ContainerBotoes>
                     <ButtonListConsulta
                         text={"Agendadas"}

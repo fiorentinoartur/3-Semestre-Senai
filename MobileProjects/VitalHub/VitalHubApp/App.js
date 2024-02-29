@@ -33,6 +33,7 @@ export default function App() {
   if (!fontsLoaded && !fontsError) {
     return null;
   }
+  
   return (
     //Navegação
     //Container

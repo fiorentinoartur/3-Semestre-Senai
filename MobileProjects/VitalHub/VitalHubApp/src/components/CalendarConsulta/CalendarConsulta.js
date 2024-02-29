@@ -28,7 +28,7 @@ const CalendarConsulta = () => {
     const [selected, setSelected] = useState(' ');
     return (
         <Calendar
-        style={{height: 350, width: 350}}
+        style={{height: 350, width: 350, marginBottom: 30}}
             onDayPress={day => {
                 setSelected(day.dateString)
             }}

@@ -6,10 +6,16 @@ import { ContainerContinuar, ListarClinicas } from '../SelecionarClinica/Style';
 import { FlatList, TouchableHighlight } from 'react-native';
 import { Button, ButtonTitle } from '../../components/Button/Button';
 import { LinkMediumAccount } from '../../components/Links/Style';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const SelecionarMedico = ({navigation}) => {
   const[id, setId] = useState();
+  const [nomeMedico, setNomeMedico] = useState();
+  const [especialidadeMedico, setEspecialidadeMedico] = useState();
 
+  const setarDadosMedicos = () => {
+AsyncStorage.setItem("nameDoctor", nomeMedico),
+AsyncStorage.setItem("especialidadeDoctor", especialidadeMedico)
+  }
   const pegarId = (id) => {
     console.warn(id);
     setId(id)
@@ -41,7 +47,11 @@ const SelecionarMedico = ({navigation}) => {
            <ListarClinicas
            data={DataMedico}
            renderItem={({item}) => 
-           <TouchableHighlight onPress={() => {pegarId(item.id)}}> 
+           <TouchableHighlight onPress={() => {
+            pegarId(item.id),
+            setNomeMedico(item.nameDoctor),
+            setEspecialidadeMedico(item.especialidades)
+            }}> 
              <CardMedico 
              clickButton={item.id == id ?? false}
              key={Math.random()}
@@ -55,7 +65,11 @@ const SelecionarMedico = ({navigation}) => {
                    <ContainerContinuar>
 
 <Button>
-  <ButtonTitle onPress={() => navigation.navigate("SelecionarData")}>Continuar</ButtonTitle>
+  <ButtonTitle onPress={() => {
+       nomeMedico ? 
+       (navigation.navigate("SelecionarData")) : (console.warn("É preciso selecionar o médico")),
+setarDadosMedicos()
+  }}>Continuar</ButtonTitle>
 </Button>
 <LinkMediumAccount onPress={() => navigation.navigate("SelecionarClinica")}>Cancelar</LinkMediumAccount>
   </ContainerContinuar>

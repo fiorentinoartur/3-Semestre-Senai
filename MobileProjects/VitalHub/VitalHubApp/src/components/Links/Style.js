@@ -15,5 +15,6 @@ color: #4D659D;
 font-family: "MontserratAlternates_600SemiBold";
 align-self: center;
 margin-top: 30px;
+margin-left: 0px;
 `
 

@@ -28,6 +28,9 @@ font-size: 14px;
 margin-bottom: 20px;
 
 `
+export const TextSemMargin = styled(TextDados)`
+margin-bottom: 0;
+`
 
 export const SubTitleDados = styled.Text`
 font-family: "Quicksand_600SemiBold";

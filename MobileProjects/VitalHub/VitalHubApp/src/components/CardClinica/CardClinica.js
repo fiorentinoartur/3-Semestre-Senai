@@ -3,7 +3,7 @@ import { Container1, ContainerAvalicao, ContainerCard, ContainerFuncionamento, L
 import { Image } from 'react-native';
 import { NamePaciente } from '../CardConsulta/Style';
 
-const CardClinica = ({nameClinic,  mediaAvaliacao, cidade, estado, funcionamento, clickButton}) => {
+const CardClinica = ({nameClinic,  mediaAvaliacao, cidade, estado, funcionamento, clickButton, localConsulta}) => {
     return (
         <ContainerCard clickButton={clickButton}>
             <Container1>

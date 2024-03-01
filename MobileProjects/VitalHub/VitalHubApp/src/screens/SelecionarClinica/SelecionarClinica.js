@@ -7,9 +7,13 @@ import { ContainerContinuar, ListarClinicas } from './Style';
 import { Button } from '../../components/Button/Button';
 import { ButtonTitle } from '../../components/ModalConsultas/Style';
 import { LinkMedium, LinkMediumAccount } from '../../components/Links/Style';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const SelecionarClinica = ({navigation}) => {
   const [selectedId, setSelectedId] = useState(); 
-
+const [localConsulta, setLocalConsulta] = useState();
+  const verificarAsync = () => {
+AsyncStorage.setItem("Local", localConsulta)
+  }
   const  toggleItemSelect = ( id ) => { 
   setSelectedId(id)
 
@@ -60,7 +64,10 @@ const SelecionarClinica = ({navigation}) => {
         keyExtractor={item => item.id} 
         renderItem={({ item }) =>
         <TouchableOpacity
-        onPress={() => toggleItemSelect(item.id)} 
+        onPress={() => {
+          toggleItemSelect(item.id),
+          setLocalConsulta(item.cidade + ", " + item.estado)
+        }} 
         >
           <CardClinica
            clickButton={item.id == selectedId ?? false}
@@ -78,7 +85,10 @@ const SelecionarClinica = ({navigation}) => {
       <ContainerContinuar>
 
     <Button>
-      <ButtonTitle onPress={() => navigation.navigate("SelecionarMedico")}>Continuar</ButtonTitle>
+      <ButtonTitle onPress={() => {
+        navigation.navigate("SelecionarMedico"),
+        verificarAsync()
+      }}>Continuar</ButtonTitle>
     </Button>
     <LinkMediumAccount onPress={() => navigation.navigate("HomePaciente")}>Cancelar</LinkMediumAccount>
       </ContainerContinuar>

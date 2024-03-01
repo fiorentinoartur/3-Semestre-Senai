@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ButtonTitle, Modal } from '../ModalConsultas/Style';
 import { CotainerAgendarConsulta, LabelAgendamento, ModalPaciente, SelectClinic, TextInput, TitleAgendamento } from './Style';
 import { Input } from '../Input/Input';
@@ -7,9 +7,17 @@ import { ContainerBotoes } from '../../screens/MedicoConsultas/Style';
 import ButtonListNivelConsulta from '../ButtonLIstNivelConsulta/ButtonListNivelConsulta';
 import { Button } from '../Button/Button';
 import { LinkMediumAccount } from '../Links/Style';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ModalHomePaciente = ({navigation, showModal}) => {
     const [statusLista, setStatusLista] = useState("rotina");
+
+    const SetarConsulta = () => {
+    
+        AsyncStorage.setItem('NivelConsulta',statusLista)
+    }
+
+
     return (
         <ModalPaciente>
             <CotainerAgendarConsulta>
@@ -40,6 +48,7 @@ const ModalHomePaciente = ({navigation, showModal}) => {
                         clickButton={statusLista == "urgencia" ?? false}
                         onPress={() => {
                             setStatusLista("urgencia")
+                            
                         }}
                         textButton="Urgência" />
                 </ContainerBotoes>
@@ -48,7 +57,7 @@ const ModalHomePaciente = ({navigation, showModal}) => {
                 <Input placeholder="Informe a localização" />
                 <Button>
                     <ButtonTitle onPress={() => {
-
+                        SetarConsulta(),
                         navigation();
                     }}>Continuar</ButtonTitle>
                     

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Modal } from '../ModalConsultas/Style';
-import { ContainerDadosModal, ContainerModal, SubTitleDados, TextConsulta, TextDados, TitleAgendar } from './Style';
+import { ContainerDadosModal, ContainerModal, SubTitleDados, TextConsulta, TextDados, TextSemMargin, TitleAgendar } from './Style';
 import { TitleAgendamentoClinica } from '../ModalHomePaciente/Style';
 import { Button, ButtonTitle } from '../Button/Button';
 import { LinkMediumAccount } from '../Links/Style';
 
-const ModalConfirmar = () => {
+const ModalConfirmar = ({showModal,data, medico, especialidade, local,  tipo}) => {
+    
     return (
             <Modal>
                 <ContainerModal>
@@ -13,19 +14,20 @@ const ModalConfirmar = () => {
                                 <TextConsulta>Consulte os dados selecionados para a sua consulta</TextConsulta>
                     <ContainerDadosModal>
                                 <SubTitleDados>Data da Consulta</SubTitleDados>
-                                <TextDados>teste</TextDados>
+                                <TextDados>{data}</TextDados>
                                 <SubTitleDados>Médico(a) da Consulta</SubTitleDados>
-                                <TextDados>teste</TextDados>
+                                <TextSemMargin>{medico}</TextSemMargin>
+                                <TextDados>{especialidade}</TextDados>
                                 <SubTitleDados>Local da Consulta</SubTitleDados>
-                                <TextDados>teste</TextDados>
+                                <TextDados>{local}</TextDados>
                                 <SubTitleDados>Tipo da Consulta</SubTitleDados>
-                                <TextDados>teste</TextDados>
+                                <TextDados>{tipo}</TextDados>
                     </ContainerDadosModal>
                     <Button>
                     <ButtonTitle>Continuar</ButtonTitle>
                     
                 </Button>
-                <LinkMediumAccount>Cancelar</LinkMediumAccount>
+                <LinkMediumAccount onPress={showModal}>Cancelar</LinkMediumAccount>
                 </ContainerModal>
             </Modal>
     );

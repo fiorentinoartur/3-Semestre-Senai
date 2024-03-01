@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
-import { Calendar, LocaleConfig } from 'react-native-calendars';
 
-LocaleConfig.locales['pt-BR'] = {
+import React, { useEffect, useState } from 'react';
+import { Calendar, LocaleConfig } from 'react-native-calendars';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import moment from 'moment';
+
+LocaleConfig.locales[moment.locale()] = {
     monthNames: [
         'Janeiro',
         'Fevereiro',
@@ -22,12 +25,21 @@ LocaleConfig.locales['pt-BR'] = {
     today: "Hoje"
 
 };
-LocaleConfig.defaultLocale = 'pt-BR'
+LocaleConfig.defaultLocale = moment.locale();
 const CalendarConsulta = () => {
 
     const [selected, setSelected] = useState(' ');
+ useEffect(() =>{
+    if (selected != null || selected != ' ') {
+    
+    const newDate = new Date(selected).toLocaleDateString('default',{day:'numeric' ,month:'long', year:'numeric'}) ;
+      AsyncStorage.setItem("DataConsulta", newDate)
+    }
+    },[selected])
+
     return (
         <Calendar
+
         style={{height: 350, width: 350, marginBottom: 30}}
             onDayPress={day => {
                 setSelected(day.dateString)

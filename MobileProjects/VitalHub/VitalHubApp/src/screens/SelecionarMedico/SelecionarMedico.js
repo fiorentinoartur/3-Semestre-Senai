@@ -11,13 +11,14 @@ const SelecionarMedico = ({navigation}) => {
   const[id, setId] = useState();
   const [nomeMedico, setNomeMedico] = useState();
   const [especialidadeMedico, setEspecialidadeMedico] = useState();
+  const [imagemMedico, setImagemMedico] = useState();
 
   const setarDadosMedicos = () => {
 AsyncStorage.setItem("nameDoctor", nomeMedico),
-AsyncStorage.setItem("especialidadeDoctor", especialidadeMedico)
+AsyncStorage.setItem("especialidadeDoctor", especialidadeMedico),
+AsyncStorage.setItem("fotoMedico", imagemMedico)
   }
   const pegarId = (id) => {
-    console.warn(id);
     setId(id)
   }
     const DataMedico = [
@@ -50,7 +51,8 @@ AsyncStorage.setItem("especialidadeDoctor", especialidadeMedico)
            <TouchableHighlight onPress={() => {
             pegarId(item.id),
             setNomeMedico(item.nameDoctor),
-            setEspecialidadeMedico(item.especialidades)
+            setEspecialidadeMedico(item.especialidades),
+            setImagemMedico(item.imagem)
             }}> 
              <CardMedico 
              clickButton={item.id == id ?? false}
@@ -64,12 +66,12 @@ AsyncStorage.setItem("especialidadeDoctor", especialidadeMedico)
            />
                    <ContainerContinuar>
 
-<Button>
-  <ButtonTitle onPress={() => {
+<Button onPress={() => {
        nomeMedico ? 
        (navigation.navigate("SelecionarData")) : (console.warn("É preciso selecionar o médico")),
 setarDadosMedicos()
-  }}>Continuar</ButtonTitle>
+  }}>
+  <ButtonTitle>Continuar</ButtonTitle>
 </Button>
 <LinkMediumAccount onPress={() => navigation.navigate("SelecionarClinica")}>Cancelar</LinkMediumAccount>
   </ContainerContinuar>

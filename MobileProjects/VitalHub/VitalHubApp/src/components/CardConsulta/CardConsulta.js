@@ -12,7 +12,6 @@ const[dados, setDados] =useState({
 
 useEffect(() => {
     if (tipoCard === 'realizada' && dados.caminhoImage != "") {
-        console.log("Dados antes de passar para pegarObj:", dados);
     console.warn(dados);
     pegarObj(dados)
 }

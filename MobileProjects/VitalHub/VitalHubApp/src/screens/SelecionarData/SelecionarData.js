@@ -8,68 +8,74 @@ import { Button, ButtonTitle } from '../../components/Button/Button';
 import { LinkMediumAccount } from '../../components/Links/Style';
 import ModalConfirmar from '../../components/ModalConfirmarConsulta/ModalConfirmar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HomePaciente from '../HomePaciente/HomePaciente';
 
-const SelecionarData = ({navigation}) => {
-    const [showModal, setShowModal] = useState(false);
-  const[medico, setMedico] = useState();
-  const[especialidade, setEspecialidade] = useState();
-  const[local, setLocal] = useState();
-  const[tipo, setTipo] = useState();
-  const[data, setData] = useState();
+const SelecionarData = ({ navigation }) => {
 
-   const VerData = () => {
-    AsyncStorage.getItem('Local', (err, result) => {
-        setLocal(result)
-      });
-    AsyncStorage.getItem('NivelConsulta', (err, result) => {
-        setTipo(result)
-      });
-    AsyncStorage.getItem('nameDoctor', (err, result) => {
-        setMedico(result)
-      });
-    AsyncStorage.getItem('especialidadeDoctor', (err, result) => {
-        setEspecialidade(result)
-      });
-    AsyncStorage.getItem('DataConsulta', (err, result) => {
-        setData(result)
-      });
+  const [dados, setDados] = useState(
+    {
+   
+    })
+  const [showModal, setShowModal] = useState(false);
 
-   }
-    const AbrirModal = () => {
-        setShowModal(showModal ? false : true)
-    }
-    return (
-        <>
-    <Container>
+
+
+
+  const BackToHome = () => {
+    navigation.navigate("HomePaciente")
+    console.log(dados);
+  }
+
+
+  const VerData = () => {
+    AsyncStorage.multiGet(['Local', 'NivelConsulta', 'nameDoctor', 'DataConsulta', 'especialidadeDoctor'], (err, results) => {
+      const newData = {};
+  
+      results.forEach(([key, value]) => {
+        newData[key] = value;
+      });
+  
+      setDados({
+        ...dados,
+        ...newData
+      });
+    });
+  };
+  
+  const AbrirModal = () => {
+    setShowModal(showModal ? false : true)
+  }
+  return (
+    <>
+      <Container>
         <TitleAgendamentoClinica>Selecionar data</TitleAgendamentoClinica>
         <CalendarConsulta />
         <SelecioneHorario>Selecione um horário disponível</SelecioneHorario>
         <SelectClinic>
-                    <TextInput>Selecionar Horário</TextInput>
-                    <Image source={require("../../assets/Images/IconArrowSelection.png")} />
-                </SelectClinic>
-                <Button>
-                    <ButtonTitle onPress={() => {
-AbrirModal(),
-VerData()
-                    }}>Continuar</ButtonTitle>
-                    
-                </Button>
-                <LinkMediumAccount onPress={() => navigation.navigate("SelecionarMedico")}>Cancelar</LinkMediumAccount>
-    </Container>
-   
-   {showModal ? (  <ModalConfirmar
-   showModal={AbrirModal}
-   medico={medico}
-   especialidade={especialidade}
-   local={local}
-   tipo={tipo}
-data={data}
-   />) : null}
-  
+          <TextInput>Selecionar Horário</TextInput>
+          <Image source={require("../../assets/Images/IconArrowSelection.png")} />
+        </SelectClinic>
+        <Button>
+          <ButtonTitle onPress={() => {
+            AbrirModal(),
+              VerData()
+          }}>Confirmar</ButtonTitle>
 
-        </>
-    );
+        </Button>
+        <LinkMediumAccount onPress={() => navigation.navigate("SelecionarMedico")}>Cancelar</LinkMediumAccount>
+      </Container>
+
+      {showModal ? (<ModalConfirmar
+        navigation={BackToHome}
+        showModal={AbrirModal}
+        dados={dados}
+
+      />) : null}
+
+
+    </>
+  );
 };
 
 export default SelecionarData;
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from '../../components/Container/Style';
 import Header from '../../components/Header/Header';
 import { TitleMes } from '../../components/Header/Style';
@@ -10,12 +10,33 @@ import CardConsulta from '../../components/CardConsulta/CardConsulta';
 import { ButtonEstetoscopio } from './Style';
 import ModalHomePaciente from '../../components/ModalHomePaciente/ModalHomePaciente';
 import CalendarHome from '../../components/CalendarHome/CalendarHome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import ModalMedico from '../../components/ModalMedico/ModalMedico';
 
 const HomePaciente = ({navigation}) => {
     const [showModal, setShowModal] = useState(false);
+    const [showModalMedico, setShowModalMedico] = useState(false);
+    const [dataMedico, setDataMedico] = useState({
+        imageDoctor: " ",
+        nameDoctor: " ",
+    })
     const [statusLista, setStatusLista] = useState("pendente");
+
+
     const exibirModal = () => {
         setShowModal(showModal ? false : true);
+    }
+    const exibirModalMedico = (nameDoctor, imageDoctor) => {
+        
+        setDataMedico({
+            ...dataMedico,
+            imageDoctor: imageDoctor,
+            nameDoctor: nameDoctor
+        })
+
+            setShowModalMedico(showModalMedico ? false : true)
+        
+     console.log(dataMedico);
     }
     const navigationNextPage = () => {
         navigation.navigate("SelecionarClinica")
@@ -121,18 +142,29 @@ const HomePaciente = ({navigation}) => {
                 <FlatList
                     data={Consultas}
                     renderItem={({ item }) =>
-                        <CardConsulta
+                    <TouchableOpacity
+                     onPress={ () => {
                         
-                            tipoCard={item.status}
-                            status={item.status == statusLista ?? false}
-                            buscarId={item.buscarId}
-                            abrirModal={item.abrirModal}
-                            pegarObj={item.pegarObj}
-                            nomePaciente={item.nomePaciente}
-                            caminhoImage={item.caminhoImage}
-                            idadePaciente={item.idadePaciente}
-                            tipoConsulta={item.tipoConsulta}
-                            horaConsulta={item.horaConsulta} />}
+                       exibirModalMedico(item.nomePaciente,item.caminhoImage);
+                    
+                     }}>
+
+
+ 
+
+                        <CardConsulta
+                        tipoCard={item.status}
+                        status={item.status == statusLista ?? false}
+                        buscarId={item.buscarId}
+                        abrirModal={item.abrirModal}
+                        pegarObj={item.pegarObj}
+                        nomePaciente={item.nomePaciente}
+                        caminhoImage={item.caminhoImage}
+                        idadePaciente={item.idadePaciente}
+                        tipoConsulta={item.tipoConsulta}
+                        horaConsulta={item.horaConsulta} />
+                    </TouchableOpacity>
+                    }
                     keyExtractor={item => item.id}
                     contentContainerStyle={styles.container}
                 />
@@ -141,6 +173,7 @@ const HomePaciente = ({navigation}) => {
                 </ButtonEstetoscopio>
             </Container>
 
+          {showModalMedico ? <ModalMedico dados={dataMedico}/> : null}
            {showModal ? <ModalHomePaciente navigation={navigationNextPage}  showModal={exibirModal}/> : null  } 
         </>
     );

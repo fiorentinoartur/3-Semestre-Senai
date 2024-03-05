@@ -20,6 +20,8 @@ import HomePaciente from './src/screens/HomePaciente/HomePaciente';
 import SelecionarClinica from './src/screens/SelecionarClinica/SelecionarClinica';
 import SelecionarMedico from './src/screens/SelecionarMedico/SelecionarMedico';
 import SelecionarData from './src/screens/SelecionarData/SelecionarData';
+import VerLocalConsulta from './src/screens/VerLocalConsulta/VerLocalConsulta';
+import { Main } from './src/screens/Main/Main';
 
 export default function App() {
   const [fontsLoaded, fontsError] = useFonts({
@@ -44,6 +46,11 @@ export default function App() {
     <NavigationContainer>
       {/* Componente para navegação */}
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+
+        <Stack.Screen 
+        name='Main'
+        component={Main}
+        />
         <Stack.Screen
           //nome da tela
           name='Navegacao'
@@ -170,6 +177,14 @@ options={{title: 'Home Paciente'}}
         component={SelecionarData}
 
         options={{title: 'Selecionar Data'}}
+        />
+
+        <Stack.Screen
+        name='VerLocalConsulta'
+
+        component={VerLocalConsulta}
+
+        options={{title: 'Ver Local da Consulta'}}
         />
 
       </Stack.Navigator>

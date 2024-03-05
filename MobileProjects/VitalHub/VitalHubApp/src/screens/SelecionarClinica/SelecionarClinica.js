@@ -88,7 +88,7 @@ const [nomeClinica, setNomeClinica] = useState();
       <ContainerContinuar>
 
     <Button  onPress={() => {
-        navigation.navigate("SelecionarMedico"),
+        selectedId != null ? navigation.navigate("SelecionarMedico") : console.warn(`É preciso selecionar uma clínica`);
         verificarAsync()
       }}>
       <ButtonTitle>Continuar</ButtonTitle>

@@ -26,17 +26,13 @@ const HomePaciente = ({navigation}) => {
     const exibirModal = () => {
         setShowModal(showModal ? false : true);
     }
-    const exibirModalMedico = (nameDoctor, imageDoctor) => {
-        
-        setDataMedico({
-            ...dataMedico,
-            imageDoctor: imageDoctor,
-            nameDoctor: nameDoctor
-        })
-
+    const exibirModalMedico = () => {
             setShowModalMedico(showModalMedico ? false : true)
         
      console.log(dataMedico);
+    }
+    const navigationToMaps = () => {
+        navigation.navigate("VerLocalConsulta")
     }
     const navigationNextPage = () => {
         navigation.navigate("SelecionarClinica")
@@ -145,8 +141,12 @@ const HomePaciente = ({navigation}) => {
                     <TouchableOpacity
                      onPress={ () => {
                         
-                       exibirModalMedico(item.nomePaciente,item.caminhoImage);
-                    
+                         setDataMedico({
+                          ...dataMedico,
+                          imageDoctor: item.caminhoImage,
+                          nameDoctor: item.nomePaciente
+                      })
+                       exibirModalMedico();
                      }}>
 
 
@@ -173,7 +173,7 @@ const HomePaciente = ({navigation}) => {
                 </ButtonEstetoscopio>
             </Container>
 
-          {showModalMedico ? <ModalMedico dados={dataMedico}/> : null}
+          {showModalMedico ? <ModalMedico dados={dataMedico} showModal={exibirModalMedico} navigation={navigationToMaps}/> : null}
            {showModal ? <ModalHomePaciente navigation={navigationNextPage}  showModal={exibirModal}/> : null  } 
         </>
     );

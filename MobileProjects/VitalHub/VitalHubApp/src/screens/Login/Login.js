@@ -10,6 +10,11 @@ import { ContentAccount } from '../../components/ContentAccount/ContentAccount';
 
 
 const Login = ({navigation}) => {
+//Chamar a funcao de login
+async function Login(){
+  navigation.navigate("Main")
+}
+
     return (
   <Container>
     <Logo source={require("../../assets/Images/LogoBlue.png")}/>
@@ -24,7 +29,7 @@ const Login = ({navigation}) => {
   
     <LinkMedium onPress={() => navigation.navigate("RecuperarSenha")}>Esqueceu sua senha</LinkMedium>
 
-    <Button>
+    <Button onPress={() => Login}>
        <ButtonTitle onPress={() => navigation.navigate("MedicoConsultas")}>Entrar</ButtonTitle> 
     </Button>
 

@@ -12,7 +12,7 @@ import { ContentAccount } from '../../components/ContentAccount/ContentAccount';
 const Login = ({navigation}) => {
 //Chamar a funcao de login
 async function Login(){
-  navigation.navigate("Main")
+  navigation.replace("Main")
 }
 
     return (

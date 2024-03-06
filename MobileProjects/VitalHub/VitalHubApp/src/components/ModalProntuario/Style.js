@@ -45,8 +45,35 @@ font-size: 16px;
 font-family: 'MontserratAlternates_600SemiBold';
 margin-bottom: 20px;
 `
+
+export const InputGray = styled(Input).attrs(
+    {
+        placeholderTextColor: '#4E4B59'
+    }
+)`
+    border:  none;
+    background-color: #F5F3F3;
+    font-size: 14px;
+    `
 export const Textarea = styled(Input)`
 height: 121px;
 
 
+`
+
+export const TextareaGray = styled(Textarea).attrs(
+    {
+        placeholderTextColor: '#4E4B59'
+    }
+)`
+border:  none;
+background-color: #F5F3F3;
+font-size: 14px;
+`
+
+export const ViewFoto = styled.View`
+height: 111px;
+width: 90%;
+background-color: #F5F3F3;
+margin-top: 10px;
 `

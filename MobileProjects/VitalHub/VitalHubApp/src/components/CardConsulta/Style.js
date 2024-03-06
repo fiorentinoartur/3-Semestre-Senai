@@ -70,7 +70,7 @@ border-radius: 5px;
 flex-direction: row;
 align-items: center;
 justify-content: center;
-gap: 5;
+gap: 5px;
 ${props => props.tipoCard != 'pendente' ? css`
 background-color: #F1F0F5;
 ` : css`

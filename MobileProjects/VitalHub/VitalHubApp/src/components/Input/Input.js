@@ -21,12 +21,12 @@ export const InputPerfil = styled(Input).attrs(
         placeholderTextColor: '#33303E'
     }
 )`
-background-color: #D4D4D4;
+background-color: #F5F3F3;
 font-family: 'MontserratAlternates_500Medium';
 font-size: 14px;
 border: none;
 color: #33303E;
-`
+`   
 export const InputCep = styled(InputPerfil)`
 width: 150px;
 `

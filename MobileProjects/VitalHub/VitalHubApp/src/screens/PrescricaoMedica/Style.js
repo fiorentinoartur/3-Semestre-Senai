@@ -8,7 +8,7 @@ flex-direction: row;
 justify-content: space-between;
 width: 90%;
 align-items: center;
-margin-top: 10px;
+margin-bottom: 20px;
 `
 export const LinkCancelPrescricao = styled.Text`
 font-size: 12px;
@@ -32,4 +32,10 @@ export const BtnTextEnviar = styled.Text`
 font-size: 14px;
 color: white;
 font-family: "MontserratAlternates_700Bold";
+`
+
+export const LinePrescricao = styled.View`
+height: 2px;
+background-color: #8C8A97;
+width: 90%;
 `

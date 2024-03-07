@@ -116,7 +116,7 @@ const MedicoConsultas = ({ navigation }) => {
 
 
       <Container>
-        <Header></Header>
+        <Header nameUser={"Artur Fiorentino"} caminhoImage={'https://github.com/fiorentinoartur.png'}></Header>
         <TitleMes>Novembro 2023</TitleMes>
         <CalendarStrip
           scrollable

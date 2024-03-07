@@ -12,10 +12,14 @@ import ModalHomePaciente from '../../components/ModalHomePaciente/ModalHomePacie
 import CalendarHome from '../../components/CalendarHome/CalendarHome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ModalMedico from '../../components/ModalMedico/ModalMedico';
+import PrescricaoMedica from '../PrescricaoMedica/PrescricaoMedica';
+import CardMedico from '../../components/CardMedico/CardMedico';
+import CardMedicoHome from '../../components/CardMedicoHome/CardMedicoHome';
 
-const HomePaciente = ({navigation}) => {
+const HomePaciente = ({ navigation }) => {
     const [showModal, setShowModal] = useState(false);
     const [showModalMedico, setShowModalMedico] = useState(false);
+    const [showPrescricaoMedica, setShowPrescricaoMedica] = useState(false);
     const [dataMedico, setDataMedico] = useState({
         imageDoctor: " ",
         nameDoctor: " ",
@@ -28,11 +32,16 @@ const HomePaciente = ({navigation}) => {
     }
     const exibirModalMedico = () => {
             setShowModalMedico(showModalMedico ? false : true)
-        
-     console.log(dataMedico);
+    }
+
+    const exibirPrescricaoMedica = () => {
+        setShowPrescricaoMedica(showPrescricaoMedica ? false : true)
     }
     const navigationToMaps = () => {
         navigation.navigate("VerLocalConsulta")
+    }
+    const navigationPrescricao = () => {
+        navigation.navigate("PrescricaoMedica")
     }
     const navigationNextPage = () => {
         navigation.navigate("SelecionarClinica")
@@ -55,8 +64,7 @@ const HomePaciente = ({navigation}) => {
             tipoConsulta: 'Retina',
             horaConsulta: '14:00',
             status: 'pendente',
-            abrirModal: exibirModal,
-
+   
 
         },
         {
@@ -67,7 +75,7 @@ const HomePaciente = ({navigation}) => {
             tipoConsulta: 'Retina',
             status: 'realizada',
             horaConsulta: '14:00',
-            abrirModal: exibirModal,
+            abrirPrescricao: navigationPrescricao,
             pegarObj: pegarObj
         },
         {
@@ -88,7 +96,7 @@ const HomePaciente = ({navigation}) => {
             tipoConsulta: 'Retina',
             status: 'pendente',
             horaConsulta: '14:00',
-            abrirModal: exibirModal,
+
         },
         {
             id: '58694a0f-3da1-471f-bd96-145571e29d74',
@@ -98,7 +106,7 @@ const HomePaciente = ({navigation}) => {
             tipoConsulta: 'Retina',
             status: 'realizada',
             horaConsulta: '14:00',
-            abrirModal: exibirModal,
+            abrirPrescricao: navigationPrescricao,
         },
 
 
@@ -106,9 +114,9 @@ const HomePaciente = ({navigation}) => {
     return (
         <>
             <Container>
-                <Header caminhoImage='https://github.com/LimaGustav.png' nameUser='Gustavo Lima'></Header>
-                
-    <CalendarHome />
+                <Header navigation={navigation} caminhoImage='https://github.com/LimaGustav.png' nameUser='Gustavo Lima'></Header>
+
+                <CalendarHome />
                 <ContainerBotoes>
                     <ButtonListConsulta
                         text={"Agendadas"}
@@ -138,32 +146,35 @@ const HomePaciente = ({navigation}) => {
                 <FlatList
                     data={Consultas}
                     renderItem={({ item }) =>
-                    <TouchableOpacity
-                     onPress={ () => {
-                        
-                         setDataMedico({
-                          ...dataMedico,
-                          imageDoctor: item.caminhoImage,
-                          nameDoctor: item.nomePaciente
-                      })
-                       exibirModalMedico();
-                     }}>
+                        <TouchableOpacity
+                            onPress={() => {
+
+                                setDataMedico({
+                                    ...dataMedico,
+                                    imageDoctor: item.caminhoImage,
+                                    nameDoctor: item.nomePaciente
+                                })
+                                statusLista == "pendente" ? 
+                                exibirModalMedico() : null;
+                            }}>
 
 
- 
 
-                        <CardConsulta
-                        tipoCard={item.status}
-                        status={item.status == statusLista ?? false}
-                        buscarId={item.buscarId}
-                        abrirModal={item.abrirModal}
-                        pegarObj={item.pegarObj}
-                        nomePaciente={item.nomePaciente}
-                        caminhoImage={item.caminhoImage}
-                        idadePaciente={item.idadePaciente}
-                        tipoConsulta={item.tipoConsulta}
-                        horaConsulta={item.horaConsulta} />
-                    </TouchableOpacity>
+
+                            <CardMedicoHome
+                                tipoCard={item.status}
+                                status={item.status == statusLista ?? false}
+                                buscarId={item.buscarId}
+                                abrirModal={item.abrirPrescricao}
+                                pegarObj={item.pegarObj}
+                                nomePaciente={item.nomePaciente}
+                                caminhoImage={item.caminhoImage}
+                                idadePaciente={item.idadePaciente}
+                                tipoConsulta={item.tipoConsulta}
+                                horaConsulta={item.horaConsulta} 
+                                
+                                />
+                        </TouchableOpacity>
                     }
                     keyExtractor={item => item.id}
                     contentContainerStyle={styles.container}
@@ -173,8 +184,13 @@ const HomePaciente = ({navigation}) => {
                 </ButtonEstetoscopio>
             </Container>
 
-          {showModalMedico ? <ModalMedico dados={dataMedico} showModal={exibirModalMedico} navigation={navigationToMaps}/> : null}
-           {showModal ? <ModalHomePaciente navigation={navigationNextPage}  showModal={exibirModal}/> : null  } 
+        
+            {showModal ? <ModalHomePaciente navigation={navigationNextPage} showModal={exibirModal} /> : null}
+          
+     {showModalMedico && statusLista === "pendente" ? (
+        <ModalMedico dados={dataMedico} showModal={exibirModalMedico} navigation={navigationToMaps} />
+      ) : null}
+
         </>
     );
 };

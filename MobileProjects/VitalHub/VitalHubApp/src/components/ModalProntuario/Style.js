@@ -70,10 +70,13 @@ border:  none;
 background-color: #F5F3F3;
 font-size: 14px;
 `
-
+export const TextareaGray100px = styled(TextareaGray)`
+height: 100px;
+`
 export const ViewFoto = styled.View`
 height: 111px;
 width: 90%;
 background-color: #F5F3F3;
 margin-top: 10px;
+margin-bottom: 10px;
 `

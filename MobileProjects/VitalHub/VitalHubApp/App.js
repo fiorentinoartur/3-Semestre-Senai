@@ -63,6 +63,7 @@ export default function App() {
         name='Main'
         component={Main}
         />
+
         <Stack.Screen
 name='HomePaciente'
 component={HomePaciente}

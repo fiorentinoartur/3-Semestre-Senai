@@ -93,7 +93,7 @@ const [nomeClinica, setNomeClinica] = useState();
       }}>
       <ButtonTitle>Continuar</ButtonTitle>
     </Button>
-    <LinkMediumAccount onPress={() => navigation.navigate("HomePaciente")}>Cancelar</LinkMediumAccount>
+    <LinkMediumAccount onPress={() => navigation.navigate("Main")}>Cancelar</LinkMediumAccount>
       </ContainerContinuar>
     </Container>
   );

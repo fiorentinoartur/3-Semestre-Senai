@@ -22,7 +22,7 @@ const SelecionarData = ({ navigation }) => {
 
 
   const BackToHome = () => {
-    navigation.navigate("HomePaciente")
+    navigation.navigate("Main")
     console.log(dados);
   }
 

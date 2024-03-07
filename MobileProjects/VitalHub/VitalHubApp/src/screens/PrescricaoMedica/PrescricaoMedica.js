@@ -2,13 +2,13 @@ import React from 'react';
 import { Container } from '../../components/Container/Style';
 import { Image, ScrollView, TouchableOpacity } from 'react-native';
 import { Button, ButtonTitle } from '../../components/Button/Button';
-import {  InputGray, LabelPaciente, NomePacienteProntuario, Textarea, TextareaGray, ViewFoto } from '../../components/ModalProntuario/Style';
+import {  InputGray, LabelPaciente, NomePacienteProntuario, Textarea, TextareaGray, TextareaGray100px, ViewFoto } from '../../components/ModalProntuario/Style';
 import { Input } from '../../components/Input/Input';
 import { LinkCancel, TipoConsulta } from '../../components/CardConsulta/Style';
 import { ContainerDados } from '../MedicoConsultas/Style';
 import { ImagePacienteProntuario } from '../PacienteProntuario/Style';
 import { LinkCancelarConsulta } from '../../components/ModalConsultas/Style';
-import { BtnTextEnviar, ButtonEnviar, ContainerButtonsPrescricao, LinkCancelPrescricao } from './Style';
+import { BtnTextEnviar, ButtonEnviar, ContainerButtonsPrescricao, LinePrescricao, LinkCancelPrescricao } from './Style';
 
 const PrescricaoMedica = ({navigation}) => {
     return (
@@ -47,9 +47,13 @@ Duração: 3 dias"></TextareaGray>
         
 <LinkCancelPrescricao>Cancelar</LinkCancelPrescricao>
     </ContainerButtonsPrescricao>
-      
+
+      <LinePrescricao></LinePrescricao>
+
+      <TextareaGray100px placeholder="Resultado do exame de sangue : tudo normal"></TextareaGray100px>
                 <LinkCancelarConsulta
-                onPress={() => navigation.navigate("MedicoConsultas")}
+                onPress={() => navigation.navigate("Main")}
+
                 >Voltar</LinkCancelarConsulta>
 
             </Container>

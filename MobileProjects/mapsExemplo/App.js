@@ -3,14 +3,20 @@ import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from 'expo-location'
-import { useEffect, useState } from 'react';
+import { requestForegroundPermissionsAsync, getCurrentPositionAsync, watchPositionAsync, LocationAccuracy } from 'expo-location'
+import { useEffect, useRef, useState } from 'react';
 import MapViewDirections from 'react-native-maps-directions';
 import {mapskey} from './utils/mapsApiKey'
 
 export default function App() {
+  const mapReference = useRef(null);
   const [initialPosition, setInitialPosition] = useState(null);
-
+  const [finalPosition, setFinalPosition] = useState(
+    {
+      latitude:  -22.8192069711535,
+      longitude: -47.06407681610886,
+    }
+  );
   async function CapturarLocalizacao() {
     const { granted } = await requestForegroundPermissionsAsync();
 
@@ -24,11 +30,46 @@ export default function App() {
 
   useEffect(() => {
     CapturarLocalizacao()
-  }, [])
+//monitora em tempo real
+    watchPositionAsync({
+      accuracy: LocationAccuracy.Highest,
+      timeInterval: 1000,
+      distanceInterval: 1,
+
+    }, async(response) => {
+      //recebe e guarda a nova localizacao
+await setInitialPosition(response)
+
+mapReference.current?.animateCamera({
+  pitch: 60,
+  center: response.coords
+})
+console.log(response);
+    }, [1000])
+  }, [1000])
+  useEffect(() => {
+   RecarregarVisualizacaoMapa()
+  }, [initialPosition])
+
+  async function RecarregarVisualizacaoMapa(){
+    if(mapReference.current && initialPosition){
+      await mapReference.current.fitToCoordinates(
+        [
+         {latitude: initialPosition.coords.latitude, longitude: initialPosition.coords.longitude}, 
+         {latitude: finalPosition.latitude, longitude: finalPosition.longitude}
+        ],
+         {
+          edgePadding: {top: 60, right: 60, bottom:60, left: 60},
+          animated : true
+         }
+      )
+    }
+  }
   return (
     <View style={styles.container}>
       {initialPosition != null ? (
         <MapView
+        ref={mapReference}
         customMapStyle={grayMapStyle}
         
           initialRegion={
@@ -76,7 +117,7 @@ export default function App() {
             }}
             title='Destino'
             description='Preciso ir pra la'
-            pinColor='red'
+            pinColor='red'  
           />
         </MapView>
 

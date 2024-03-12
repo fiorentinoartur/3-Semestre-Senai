@@ -24,7 +24,7 @@ initialRegion={SenaiLocation}
 style={styles.map} >
 
     <Marker
-coordinate={{latitude:-23.61511886409227, longitude: -46.570723260077095 }}
+    coordinate={{latitude:-23.61511886409227, longitude: -46.570723260077095 }}
     image={require("../../assets/Images/PinMapa.png")}
     />
  
@@ -36,11 +36,11 @@ coordinate={{latitude:-23.61511886409227, longitude: -46.570723260077095 }}
                 <InputPerfil />
                 <ContetnCidadeCep>
                     <View >
-                        <TextQuickSand16>Número:</TextQuickSand16>
+                        <TextQuickSand16>Número: </TextQuickSand16>
                         <InputCep />
                     </View>
                     <View>
-                        <TextQuickSand16>Bairro:</TextQuickSand16>
+                        <TextQuickSand16>Bairro: </TextQuickSand16>
                         <InputCep />
                     </View>
                 </ContetnCidadeCep>

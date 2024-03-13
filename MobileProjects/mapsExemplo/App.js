@@ -41,12 +41,12 @@ export default function App() {
 await setInitialPosition(response)
 
 mapReference.current?.animateCamera({
-  pitch: 60,
-  center: response.coords
-})
-console.log(response);
+    pitch: 60,
+    center: response.coords
+  })
+  console.log(response);
+      }, [1000])
     }, [1000])
-  }, [1000])
   useEffect(() => {
    RecarregarVisualizacaoMapa()
   }, [initialPosition])

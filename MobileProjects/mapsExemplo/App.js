@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
@@ -7,6 +7,7 @@ import { requestForegroundPermissionsAsync, getCurrentPositionAsync, watchPositi
 import { useEffect, useRef, useState } from 'react';
 import MapViewDirections from 'react-native-maps-directions';
 import {mapskey} from './utils/mapsApiKey'
+import { FontAwesome } from '@expo/vector-icons';
 
 export default function App() {
   const mapReference = useRef(null);
@@ -128,6 +129,9 @@ mapReference.current?.animateCamera({
           <ActivityIndicator />
         </>
       )}
+      <TouchableOpacity style={styles.caputura}>
+        <FontAwesome name='camera' size={23} color={"#fff"}/>
+      </TouchableOpacity>
     </View>
   );
 }

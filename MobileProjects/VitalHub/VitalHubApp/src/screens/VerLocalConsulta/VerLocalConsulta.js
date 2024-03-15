@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Container } from '../../components/Container/Style';
+import { Container, ContainerHeader } from '../../components/Container/Style';
 import MapView, { Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
@@ -141,8 +141,10 @@ const VerLocalConsulta = () => {
                 </>
             ) : (
                 <>
+                <ContainerHeader>
                     <Text>Localização não encontrada</Text>
                     <ActivityIndicator />
+                </ContainerHeader>
                 </>
             )}
 

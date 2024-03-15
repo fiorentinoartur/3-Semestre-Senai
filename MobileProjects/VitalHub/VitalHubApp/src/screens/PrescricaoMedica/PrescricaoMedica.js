@@ -13,13 +13,19 @@ import CameraProntuario from '../../components/CameraProntuario/CameraProntuario
 
 const PrescricaoMedica = ({ navigation }) => {
     const [showCamera, setShowCamera] = useState(false);
+    const [fotoEx, setFotoEx] = useState(null);
+
     const exibirCamera = () => {
         setShowCamera(showCamera ? false : true)
     }
 
+        useEffect(() => {
+            console.log( fotoEx )
+        },[fotoEx])
+
     return (
         <>
-            {showCamera ? <CameraProntuario /> : (
+            {showCamera ? <CameraProntuario showModal={exibirCamera} setUriCameraCapture={setFotoEx}/> : (
 
                 <ScrollView>
                     <Container>
@@ -44,8 +50,10 @@ Dosagem: 50 mg
 Frequência: 3 vezes ao dia
 Duração: 3 dias"></TextareaGray>
                         <LabelPaciente>Exames Médicos</LabelPaciente>
-                        <ViewFoto>
 
+                        
+                        <ViewFoto>
+                            <Image style={{ width : '100%', height : 500 }} source={{uri: fotoEx}} />
                         </ViewFoto>
                         <ContainerButtonsPrescricao>
                             <ButtonEnviar onPress={exibirCamera}>

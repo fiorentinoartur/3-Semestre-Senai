@@ -53,7 +53,7 @@ Duração: 3 dias"></TextareaGray>
 
                         
                         <ViewFoto>
-                            <Image style={{ width : '100%', height : 500 }} source={{uri: fotoEx}} />
+                            <Image style={{ width : '100%', height: 111 }} source={{uri: fotoEx}} />
                         </ViewFoto>
                         <ContainerButtonsPrescricao>
                             <ButtonEnviar onPress={exibirCamera}>
@@ -61,7 +61,9 @@ Duração: 3 dias"></TextareaGray>
                                 <BtnTextEnviar>Enviar</BtnTextEnviar>
                             </ButtonEnviar>
 
-                            <LinkCancelPrescricao>Cancelar</LinkCancelPrescricao>
+                            <LinkCancelPrescricao onPress={() => {
+                                setFotoEx(null)
+                            }}>Cancelar</LinkCancelPrescricao>
                         </ContainerButtonsPrescricao>
 
                         <LinePrescricao></LinePrescricao>
